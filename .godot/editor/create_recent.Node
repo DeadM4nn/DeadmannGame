@@ -1,5 +1,9 @@
-TileMap
+TextureRect
 Node2D
+ColorRect
+Panel
+Camera2D
+TileMap
 Sprite2D
 CollisionShape2D
 Area2D
@@ -8,6 +12,5 @@ AnimatedSprite2D
 RigidBody2D
 AnimationPlayer
 AudioStreamPlayer
-Camera2D
 Timer
 CharacterBody2D

@@ -12,6 +12,8 @@ const FLOW_STATES : Dictionary = {
 	STATES.WALKING : [STATES.IDLE],
 }
 
+var is_flipped : bool = false
+
 ## States of the Player
 const ANIMATION_STATES : Dictionary = {
 	STATES.IDLE : "IDLE", 
@@ -35,15 +37,18 @@ func _physics_process(_delta):
 		Input.get_axis("ui_up", "ui_down")
 	)
 	
-	## Moving
+		## Moving
 	if direction:
 		velocity = direction * SPEED
-
 	else:
+#		## Friction
+#		velocity.x = move_toward(velocity.x, 0, SPEED)
+#		## Friction
+#		velocity.y = move_toward(velocity.y, 0, SPEED)
 		## Friction
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.x = 0
 		## Friction
-		velocity.y = move_toward(velocity.y, 0, SPEED)
+		velocity.y = 0
 	
 	# Move
 	move_and_slide()
@@ -59,10 +64,17 @@ func _physics_process(_delta):
 	
 	
 	## Flips the character if  mouse is on the left side
-	if get_local_mouse_position().x < position.x :
+	print($"Gun Pivot".rotation_degrees)
+	
+	## Flips based on mouse Movement
+	if get_global_mouse_position() < global_position and not is_flipped :
+		$"Gun Pivot/GunAndHand".scale.y *= -1
 		$Sprite.scale.x *= -1
-		
-
+		is_flipped = true
+	elif get_global_mouse_position() >= global_position and is_flipped:
+		$"Gun Pivot/GunAndHand".scale.y *= -1
+		$Sprite.scale.x *= -1
+		is_flipped = false
 
 ## Assigns the state. Please specify the state behaviour inside STATE Node
 func set_state(new_state : STATES) -> bool:
@@ -80,4 +92,4 @@ func set_state(new_state : STATES) -> bool:
 
 ## Shoots the gun on interval
 func _on_shoot_interval_timeout():
-	$"Gun Pivot/Gun".shoot($"Gun Pivot".rotation)
+	$"Gun Pivot/GunAndHand/Gun".shoot($"Gun Pivot".rotation)

@@ -9,3 +9,5 @@ res://Asset/Tile/Test_Tile/Test_Tile.tres
 res://Element/Wall/walls.tscn
 res://Element/Wall/Indestructibe.tscn
 res://Element/Wall/DestructibleBehaviour.gd
+res://Element/UI/ui.tscn
+res://Element/UI/Default_Theme.tres
