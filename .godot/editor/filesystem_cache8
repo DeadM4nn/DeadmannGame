@@ -1,7 +1,7 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1688818911
+::res://::1688819913
 default_bus_layout.tres::AudioBusLayout::1004237871512451586::1688791477::0::1::::<><>::
-GameMaster.tscn::PackedScene::6350723793712123509::1688818911::0::1::::<><>::uid://c2qy74u4hqxla::::res://Element/Wall/Bouncer.tscn<>uid://hogivbn4mial::::res://Levels/TestLevel/node_2d.tscn
+GameMaster.tscn::PackedScene::6350723793712123509::1688819913::0::1::::<><>::uid://c2qy74u4hqxla::::res://Element/Wall/Bouncer.tscn<>uid://hogivbn4mial::::res://Levels/TestLevel/node_2d.tscn
 icon.svg::CompressedTexture2D::6928055496712576934::1688780255::1688780260::1::::<><>::
 README.md::TextFile::-1::1688789363::0::1::::<><>::
 ::res://Asset/::1688810222
@@ -12,14 +12,15 @@ Hand.png::CompressedTexture2D::7707940416647698788::1688801095::1688801103::1:::
 head.png::CompressedTexture2D::8762888836431040245::1688800425::1688800428::1::::<><>::
 Lower Body.png::CompressedTexture2D::1744585638596335521::1688801855::1688801856::1::::<><>::
 Upper Body.png::CompressedTexture2D::2186388847775438013::1688801520::1688801523::1::::<><>::
-::res://Asset/Sprite/::1688803884
+::res://Asset/Sprite/::1688820931
 bullet_default.png::CompressedTexture2D::5761816349272571552::1688793435::1688793775::1::::<><>::
 bullet_old.png::CompressedTexture2D::782636573293475057::1688790945::1688793775::1::::<><>::
 gun_green.png::CompressedTexture2D::5740074486694217360::1688786394::1688793775::1::::<><>::
 gun_green_default.png::CompressedTexture2D::4719902368963625586::1688803881::1688803884::1::::<><>::
 gun_green_old.png::CompressedTexture2D::8849770941075259903::1688790036::1688793775::1::::<><>::
-::res://Asset/Swappables/::1688816736
-Bug.png::CompressedTexture2D::5869871521637586151::1688816357::1688816736::1::::<><>::
+Shadow.png::CompressedTexture2D::3438634804365284640::1688820932::1688820933::1::::<><>::
+::res://Asset/Swappables/::1688820291
+Bug.png::CompressedTexture2D::5869871521637586151::1688820288::1688820291::1::::<><>::
 Door.png::CompressedTexture2D::980187630003223602::1688816239::1688809415::1::::<><>::
 ::res://Asset/Tile/::1688803085
 ::res://Asset/Tile/Dungeon Tile/::1688813264
@@ -32,35 +33,37 @@ crack_2.png::CompressedTexture2D::2158680921076305159::1688797349::1688797350::1
 Destructble1.png::CompressedTexture2D::7944291288907449397::1688797320::1688797350::1::::<><>::
 Destructble.png::CompressedTexture2D::6132681607131969324::1688793814::1688797350::1::::<><>::
 Indestructible.png::CompressedTexture2D::3507834435861487849::1688793814::1688797350::1::::<><>::
-Test_Tile.tres::TileSet::975224628302750436::1688816843::0::1::::<><>::res://Element/Wall/walls.tscn<>uid://c2qy74u4hqxla::::res://Element/Wall/Bouncer.tscn
+Test_Tile.tres::TileSet::975224628302750436::1688816843::0::1::::<><>::res://Element/Wall/walls.tscn<>uid://c2qy74u4hqxla
 ::res://Asset/UI/::1688811496
 arrow_element.png::CompressedTexture2D::8400571349595950186::1688811494::1688811496::1::::<><>::
 UI.png::CompressedTexture2D::1776045735925984842::1688810408::1688810410::1::::<><>::
-::res://Class/::1688819135
-bouncer.gd::GDScript::-1::1688817005::0::1::::Bouncer<>StaticBody2D<>::
+::res://Class/::1688819386
+Bouncer.gd::GDScript::-1::1688817005::0::1::::Bouncer<>StaticBody2D<>::
 Swappable.gd::GDScript::-1::1688819135::0::1::::<>Node<>::
-::res://Element/::1688817902
+::res://Element/::1688820173
 Bouncer.tscn::PackedScene::9073035657523956317::1688816769::0::1::::<><>::
-::res://Element/Explosion/::1688818911
-Explosion.tscn::PackedScene::85299363449885733::1688818911::0::1::::<><>::
-::res://Element/Player/::1688819086
-player.tscn::PackedScene::2898639757241216638::1688819086::0::1::::<><>::res://Element/Player/PlayerControl.gd<>uid://dn5mpoaqcb0xq::::res://Element/Player/Gun/default.tscn<>uid://y4dcnudkklbd::::res://Asset/Bot/Lower Body.png<>uid://dw32q7xjfwf1n::::res://Asset/Bot/head.png<>uid://6fdrfwdjrc3f::::res://Asset/Bot/Upper Body.png<>uid://dh21wgktj7ofs::::res://Asset/Bot/Hand.png
+::res://Element/Explosion/::1688819953
+Explosion.tscn::PackedScene::85299363449885733::1688819953::0::1::::<><>::
+::res://Element/Player/::1688819913
+player.tscn::PackedScene::2898639757241216638::1688819913::0::1::::<><>::res://Element/Player/PlayerControl.gd<>uid://dn5mpoaqcb0xq::::res://Element/Player/Gun/default.tscn<>uid://y4dcnudkklbd::::res://Asset/Bot/Lower Body.png<>uid://dw32q7xjfwf1n::::res://Asset/Bot/head.png<>uid://6fdrfwdjrc3f::::res://Asset/Bot/Upper Body.png<>uid://dh21wgktj7ofs::::res://Asset/Bot/Hand.png
 PlayerControl.gd::GDScript::-1::1688816025::0::1::::<>CharacterBody2D<>::
-::res://Element/Player/Gun/::1688818911
-default.tscn::PackedScene::8134404477873898922::1688818911::0::1::::<><>::res://Element/Player/Gun/GunBehaviour.gd<>uid://b8imdqn6rudig::::res://Asset/Sprite/gun_green_default.png
+::res://Element/Player/Gun/::1688819913
+default.tscn::PackedScene::8134404477873898922::1688819913::0::1::::<><>::res://Element/Player/Gun/GunBehaviour.gd<>uid://b8imdqn6rudig::::res://Asset/Sprite/gun_green_default.png
 GunBehaviour.gd::GDScript::-1::1688802328::0::1::::<>Node2D<>::
-::res://Element/Player/Gun/Bullet/::1688819136
+::res://Element/Player/Gun/Bullet/::1688819913
 BulletBehaviour.gd::GDScript::-1::1688783493::0::1::::<>Node2D<>::
-default.tscn::PackedScene::6665367283575022589::1688819136::0::1::::<><>::uid://codcjkedjagma::::res://Asset/Sprite/bullet_default.png
-::res://Element/UI/::1688819107
-Default_Theme.tres::Theme::3693202561307285024::1688811815::0::1::::<><>::uid://0klhjexq1vyw::::res://Asset/UI/UI.png
-ui.tscn::PackedScene::4651467411324263929::1688819107::0::1::::<><>::uid://bsvarhvpjbsiq::::res://Element/UI/Default_Theme.tres<>uid://drxkghklshl1s::::res://Asset/UI/arrow_element.png
-::res://Element/Wall/::1688818911
-Bouncer.tscn::PackedScene::6702486098310264674::1688819386::0::1::::<><>::res://Class/bouncer.gd<>uid://ctmymt2mq5ubk::::res://Asset/Tile/Test_Tile/Destructble.png
+default.tscn::PackedScene::6665367283575022589::1688819913::0::1::::<><>::uid://codcjkedjagma::::res://Asset/Sprite/bullet_default.png
+::res://Element/Swappable/::1688820918
+base_swappable.tscn::PackedScene::1696133422874703024::1688820918::0::1::::<><>::uid://cpvn6q40o3byt::::res://Asset/Swappables/Bug.png
+::res://Element/UI/::1688819913
+Default_Theme.tres::Theme::3693202561307285024::1688819913::0::1::::<><>::uid://0klhjexq1vyw::::res://Asset/UI/UI.png
+ui.tscn::PackedScene::4651467411324263929::1688819913::0::1::::<><>::uid://bsvarhvpjbsiq::::res://Element/UI/Default_Theme.tres<>uid://drxkghklshl1s::::res://Asset/UI/arrow_element.png
+::res://Element/Wall/::1688819914
+Bouncer.tscn::PackedScene::6702486098310264674::1688819914::0::1::::<><>::res://Class/Bouncer.gd<>uid://ctmymt2mq5ubk::::res://Asset/Tile/Test_Tile/Destructble.png
 DestructibleBehaviour.gd::GDScript::-1::1688798895::0::1::::Destructible<>StaticBody2D<>::
 ::res://Levels/::1688790865
-::res://Levels/TestLevel/::1688818911
-node_2d.tscn::PackedScene::520602887495954107::1688818911::0::1::::<><>::uid://bhkef5lt78nba::::res://Element/Player/player.tscn<>uid://cqqjvf50n73a3::::res://Asset/Tile/Dungeon Tile/Floor 3x3.png<>uid://b88or3ta17n6r::::res://Asset/Tile/Dungeon Tile/Wall.png<>uid://n72sunuti4ao::::res://Asset/Swappables/Door.png<>uid://d2jbto42a77b2::::res://Element/Bouncer.tscn
+::res://Levels/TestLevel/::1688819913
+node_2d.tscn::PackedScene::520602887495954107::1688819913::0::1::::<><>::uid://bhkef5lt78nba::::res://Element/Player/player.tscn<>uid://cqqjvf50n73a3::::res://Asset/Tile/Dungeon Tile/Floor 3x3.png<>uid://b88or3ta17n6r::::res://Asset/Tile/Dungeon Tile/Wall.png<>uid://n72sunuti4ao::::res://Asset/Swappables/Door.png<>uid://d2jbto42a77b2::::res://Element/Bouncer.tscn
 ::res://Music/::1688791545
 guitar_n_piano.mp3::AudioStreamMP3::3902469717593850573::1688791525::1688791545::1::::<><>::
 test_metal.wav::AudioStreamWAV::362103596554159309::1688791315::1688791324::1::::<><>::

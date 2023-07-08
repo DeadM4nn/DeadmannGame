@@ -1,1 +1,1 @@
-class_name Bouncer extends StaticBody2D
+class_name Bouncer extends RigidBody2D

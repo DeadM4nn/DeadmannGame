@@ -1,0 +1,146 @@
+[gd_scene load_steps=15 format=3 uid="uid://yfvcmsf6ldym"]
+
+[ext_resource type="Script" path="res://Element/Swappable/base_swappable.gd" id="1_sn41v"]
+[ext_resource type="Texture2D" uid="uid://cpvn6q40o3byt" path="res://Asset/Swappables/Bug.png" id="1_uodgk"]
+[ext_resource type="Texture2D" uid="uid://bo8x2vv0ov2ci" path="res://Asset/Sprite/Shadow.png" id="2_vqnaf"]
+
+[sub_resource type="Animation" id="Animation_rmpsy"]
+resource_name = "Flap_Wings"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite/Sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.728745, 1.35024), Vector2(1, 1), Vector2(0.728745, 1.35024), Vector2(1, 1), Vector2(0.728745, 1.35024)]
+}
+
+[sub_resource type="Animation" id="Animation_agcnu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite/Sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8o8qd"]
+_data = {
+"Flap_Wings": SubResource("Animation_rmpsy"),
+"RESET": SubResource("Animation_agcnu")
+}
+
+[sub_resource type="Shader" id="Shader_vr1m6"]
+code = "shader_type canvas_item;
+
+uniform sampler2D dissolve_texture;
+uniform float dissolve_value : hint_range(0,1);
+
+void fragment(){
+    vec4 main_texture = texture(TEXTURE, UV);
+    vec4 noise_texture = texture(dissolve_texture, UV);
+    main_texture.a *= floor(dissolve_value + min(1, noise_texture.x));
+    COLOR = main_texture;
+}"
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_vvall"]
+noise_type = 4
+seed = 1
+frequency = 0.4839
+offset = Vector3(0, 0, 0.15)
+fractal_type = 2
+metadata/_preview_in_3d_space_ = true
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_fe0jd"]
+noise = SubResource("FastNoiseLite_vvall")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_blx8c"]
+shader = SubResource("Shader_vr1m6")
+shader_parameter/dissolve_value = 1.0
+shader_parameter/dissolve_texture = SubResource("NoiseTexture2D_fe0jd")
+
+[sub_resource type="Animation" id="Animation_mtths"]
+resource_name = "Float"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite/Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(5.09824, 0.277392, 2.63902),
+"update": 0,
+"values": [Vector2(0, -5), Vector2(0, 6), Vector2(0, -5)]
+}
+
+[sub_resource type="Animation" id="Animation_dwg7w"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite/Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gsf25"]
+_data = {
+"Float": SubResource("Animation_mtths"),
+"RESET": SubResource("Animation_dwg7w")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u352e"]
+radius = 52.1895
+
+[node name="BaseSwappable" type="RigidBody2D"]
+mass = 90000.0
+gravity_scale = 0.0
+script = ExtResource("1_sn41v")
+
+[node name="Wings" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_8o8qd")
+}
+
+[node name="Sprite" type="Node2D" parent="."]
+scale = Vector2(2.085, 2.085)
+
+[node name="Shadow" type="Sprite2D" parent="Sprite"]
+modulate = Color(0.246094, 0.34375, 0.109375, 1)
+z_index = -99
+z_as_relative = false
+position = Vector2(-1.11087, 26.661)
+scale = Vector2(0.970601, 0.486007)
+texture = ExtResource("2_vqnaf")
+
+[node name="Sprite" type="Sprite2D" parent="Sprite"]
+material = SubResource("ShaderMaterial_blx8c")
+texture = ExtResource("1_uodgk")
+
+[node name="Floating" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_gsf25")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(1.17023, 1.17023)
+shape = SubResource("CircleShape2D_u352e")

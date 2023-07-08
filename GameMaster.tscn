@@ -7,7 +7,7 @@
 
 [node name="Node2D" parent="." instance=ExtResource("2_ttdpv")]
 
-[node name="Industructibe" parent="Node2D" instance=ExtResource("2_qt5cp")]
+[node name="Industructibe3" parent="Node2D" instance=ExtResource("2_qt5cp")]
 position = Vector2(1297, 143)
 rotation = -0.837234
 scale = Vector2(3.28, 1)

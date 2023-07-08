@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bhkef5lt78nba"]
+[gd_scene load_steps=19 format=3 uid="uid://bhkef5lt78nba"]
 
 [ext_resource type="Script" path="res://Element/Player/PlayerControl.gd" id="1_hsark"]
 [ext_resource type="PackedScene" uid="uid://dn5mpoaqcb0xq" path="res://Element/Player/Gun/default.tscn" id="2_lkwsr"]
@@ -6,9 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dw32q7xjfwf1n" path="res://Asset/Bot/head.png" id="3_myggk"]
 [ext_resource type="Texture2D" uid="uid://6fdrfwdjrc3f" path="res://Asset/Bot/Upper Body.png" id="3_yovud"]
 [ext_resource type="Texture2D" uid="uid://dh21wgktj7ofs" path="res://Asset/Bot/Hand.png" id="5_bpmhl"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_h670q"]
-size = Vector2(94, 131)
+[ext_resource type="Texture2D" uid="uid://bo8x2vv0ov2ci" path="res://Asset/Sprite/Shadow.png" id="5_roufa"]
 
 [sub_resource type="Animation" id="Animation_a6fr2"]
 length = 0.001
@@ -142,6 +140,33 @@ tracks/1/keys = {
 "values": [Vector2(-33, -1)]
 }
 
+[sub_resource type="Animation" id="Animation_bfiiw"]
+resource_name = "RESET"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Gun Pivot:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-33, -1)]
+}
+
 [sub_resource type="Animation" id="Animation_7xlyf"]
 resource_name = "RIGHT"
 length = 0.1
@@ -170,39 +195,16 @@ tracks/1/keys = {
 "values": [Vector2(33, -1)]
 }
 
-[sub_resource type="Animation" id="Animation_bfiiw"]
-resource_name = "RESET"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Gun Pivot:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-33, -1)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_sd2h6"]
 _data = {
 "LEFT": SubResource("Animation_suyob"),
 "RESET": SubResource("Animation_bfiiw"),
 "RIGHT": SubResource("Animation_7xlyf")
 }
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1iahm"]
+radius = 50.0
+height = 128.0
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 8
@@ -238,9 +240,13 @@ position = Vector2(-3, -58)
 scale = Vector2(1.821, 1.32181)
 texture = ExtResource("3_myggk")
 
-[node name="Shape" type="CollisionShape2D" parent="."]
-position = Vector2(0, -25)
-shape = SubResource("RectangleShape2D_h670q")
+[node name="Shadow" type="Sprite2D" parent="Sprite"]
+modulate = Color(0.246094, 0.34375, 0.109375, 1)
+z_index = -99
+z_as_relative = false
+position = Vector2(2.47038, 42)
+scale = Vector2(1.39155, 0.486007)
+texture = ExtResource("5_roufa")
 
 [node name="Timer" type="Timer" parent="."]
 
@@ -279,6 +285,10 @@ texture = ExtResource("5_bpmhl")
 libraries = {
 "": SubResource("AnimationLibrary_sd2h6")
 }
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -24)
+shape = SubResource("CapsuleShape2D_1iahm")
 
 [connection signal="timeout" from="ShootInterval" to="." method="_on_shoot_interval_timeout"]
 

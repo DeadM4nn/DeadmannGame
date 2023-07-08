@@ -6,7 +6,10 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ob2wy"]
 size = Vector2(100, 100)
 
-[node name="Industructibe" type="StaticBody2D"]
+[node name="Industructibe" type="RigidBody2D"]
+collision_layer = 2049
+mass = 0.1
+gravity_scale = 0.0
 script = ExtResource("1_i2hwg")
 
 [node name="Texture" type="Sprite2D" parent="."]

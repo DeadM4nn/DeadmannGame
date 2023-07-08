@@ -54,7 +54,7 @@ func _physics_process(_delta):
 		velocity.y = 0
 	
 	# Move
-	move_and_slide()
+	var is_moving = move_and_slide()
 	
 	## Aim
 	$"Gun Pivot".look_at(get_global_mouse_position())
@@ -80,6 +80,14 @@ func _physics_process(_delta):
 		$Flip.play("LEFT")
 #		$Sprite.scale.x *= -1
 		is_flipped = false
+		
+
+	## To push Swappables Around
+	if is_moving: # true if collided
+		for i in get_slide_collision_count():
+			var col = get_slide_collision(i)
+			if col.get_collider() is RigidBody2D:
+				col.get_collider().apply_force(col.get_normal() * -500)
 
 
 ## Assigns the state. Please specify the state behaviour inside STATE Node
