@@ -1,18 +1,88 @@
-[gd_scene load_steps=3 format=3 uid="uid://c170vi5j4hrib"]
+[gd_scene load_steps=7 format=3 uid="uid://c170vi5j4hrib"]
 
-[ext_resource type="Texture2D" uid="uid://c5yacdqextl07" path="res://icon.svg" id="1_dxdmx"]
+[ext_resource type="Texture2D" uid="uid://codcjkedjagma" path="res://Asset/Sprite/bullet_default.png" id="1_wse5y"]
+
+[sub_resource type="GDScript" id="GDScript_joihv"]
+script/source = "extends RigidBody2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	$Spin.play(\"BulletSpin\")
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+
+
+# Destroy Self 
+func _on_hit(body):
+	queue_free()
+"
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ertxx"]
+radius = 5.00159
+height = 14.2323
+
+[sub_resource type="Animation" id="Animation_3ruqp"]
+resource_name = "BulletSpin"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
+[sub_resource type="Animation" id="Animation_vla64"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7bvjm"]
+_data = {
+"BulletSpin": SubResource("Animation_3ruqp"),
+"RESET": SubResource("Animation_vla64")
+}
 
 [node name="default" type="RigidBody2D"]
-position = Vector2(41, 0)
+collision_layer = 48
 mass = 0.5
 gravity_scale = 0.0
+max_contacts_reported = 1
+contact_monitor = true
+script = SubResource("GDScript_joihv")
 
 [node name="Texture" type="Sprite2D" parent="."]
-scale = Vector2(0.643434, 0.224927)
-texture = ExtResource("1_dxdmx")
+scale = Vector2(3, 3)
+texture = ExtResource("1_wse5y")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2(4, 1)
+scale = Vector2(-3.99873, 2.95103)
 shape = SubResource("CapsuleShape2D_ertxx")
+
+[node name="Spin" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Texture")
+speed_scale = 5.0
+libraries = {
+"": SubResource("AnimationLibrary_7bvjm")
+}
+
+[connection signal="body_entered" from="." to="." method="_on_hit"]

@@ -23,10 +23,8 @@ const ANIMATION_STATES : Dictionary = {
 var state : STATES : set = set_state
 
 ## The Speed of the Player
-const SPEED = 300.0
+const SPEED = 700.0
 
-func process(_delta):
-	pass
 
 func _physics_process(_delta):
 	
@@ -58,6 +56,13 @@ func _physics_process(_delta):
 		state = STATES.IDLE
 	else:
 		state = STATES.WALKING
+	
+	
+	## Flips the character if  mouse is on the left side
+	if get_local_mouse_position().x < position.x :
+		$Sprite.scale.x *= -1
+		
+
 
 ## Assigns the state. Please specify the state behaviour inside STATE Node
 func set_state(new_state : STATES) -> bool:
@@ -71,3 +76,8 @@ func set_state(new_state : STATES) -> bool:
 		push_error("Tried to do an illegal state change. %s to %s" % 
 			[STATES.find_key(state), STATES.find_key(new_state)])
 		return false
+
+
+## Shoots the gun on interval
+func _on_shoot_interval_timeout():
+	$"Gun Pivot/Gun".shoot($"Gun Pivot".rotation)

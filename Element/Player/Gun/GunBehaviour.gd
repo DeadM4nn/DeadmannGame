@@ -14,18 +14,6 @@ func _ready():
 	pass # Replace with function body.
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
-	
-	## Flips the Gun Vertically if the gun is on the left side
-	if abs(global_rotation_degrees) > 90 and not is_flipped:
-		$Texture.scale.y *= -1
-		is_flipped = true
-	elif is_flipped and abs(global_rotation_degrees) <= 90:
-		$Texture.scale.y *= -1
-		is_flipped = false
-
-
 # Duck Typed : Shoot. Spawns a bullet. Bullet is instantiated from
 # BULLET_FILE
 func shoot( pivot_rotation : float = 0.00, curr_bull_speed : float = bullet_speed) -> void:
@@ -38,7 +26,3 @@ func shoot( pivot_rotation : float = 0.00, curr_bull_speed : float = bullet_spee
 	
 	curr_bullet.apply_impulse(Vector2(curr_bull_speed, 0).rotated(pivot_rotation))
 
-
-func _unhandled_input(event):
-	if event.is_action_pressed("shoot"):
-		shoot(get_parent().rotation)

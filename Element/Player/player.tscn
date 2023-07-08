@@ -1,91 +1,27 @@
-[gd_scene load_steps=11 format=3 uid="uid://bhkef5lt78nba"]
+[gd_scene load_steps=14 format=3 uid="uid://bhkef5lt78nba"]
 
-[ext_resource type="Texture2D" uid="uid://c5yacdqextl07" path="res://icon.svg" id="1_586hj"]
 [ext_resource type="Script" path="res://Element/Player/PlayerControl.gd" id="1_hsark"]
 [ext_resource type="PackedScene" uid="uid://dn5mpoaqcb0xq" path="res://Element/Player/Gun/default.tscn" id="2_lkwsr"]
+[ext_resource type="Texture2D" uid="uid://y4dcnudkklbd" path="res://Asset/Bot/Lower Body.png" id="2_ypuk2"]
+[ext_resource type="Texture2D" uid="uid://dw32q7xjfwf1n" path="res://Asset/Bot/head.png" id="3_myggk"]
+[ext_resource type="Texture2D" uid="uid://6fdrfwdjrc3f" path="res://Asset/Bot/Upper Body.png" id="3_yovud"]
+[ext_resource type="Texture2D" uid="uid://dh21wgktj7ofs" path="res://Asset/Bot/Hand.png" id="5_bpmhl"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dgrws"]
-radius = 43.0
-height = 144.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h670q"]
+size = Vector2(94, 131)
+
+[sub_resource type="Animation" id="Animation_a6fr2"]
+length = 0.001
 
 [sub_resource type="Animation" id="Animation_gqe6y"]
 resource_name = "WALKING"
 length = 2.0
 loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite/Body:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [-0.250534, 0.331059]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite/Body:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5, 1, 1.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [Vector2(-30, -35), Vector2(3, -1), Vector2(34, -25), Vector2(3, -1)]
-}
-
-[sub_resource type="Animation" id="Animation_a6fr2"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite/Body:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite/Body:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, -7.62939e-06)]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qdh2j"]
 _data = {
 "RESET": SubResource("Animation_a6fr2"),
 "WALKING": SubResource("Animation_gqe6y")
-}
-
-[sub_resource type="Animation" id="Animation_5m6e8"]
-resource_name = "WALKING"
-length = 0.1
-tracks/0/type = "method"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": ["WALKING", -1, 1.0, false],
-"method": &"play"
-}]
 }
 
 [sub_resource type="Animation" id="Animation_fu5ce"]
@@ -106,6 +42,24 @@ tracks/0/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_5m6e8"]
+resource_name = "WALKING"
+length = 0.1
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["WALKING", -1, 1.0, false],
+"method": &"play"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_r6mpc"]
 _data = {
 "IDLE": SubResource("Animation_fu5ce"),
@@ -113,22 +67,48 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D"]
+collision_layer = 8
 script = ExtResource("1_hsark")
 
 [node name="Sprite" type="Node2D" parent="."]
+position = Vector2(0, 35)
+scale = Vector2(0.668876, 0.668876)
 
-[node name="Body" type="Sprite2D" parent="Sprite"]
-position = Vector2(0, -7.62939e-06)
-scale = Vector2(0.689222, 1.13546)
-texture = ExtResource("1_586hj")
+[node name="Move" type="Node2D" parent="Sprite"]
+position = Vector2(0.969757, -35.6613)
+
+[node name="Legs" type="Sprite2D" parent="Sprite/Move"]
+position = Vector2(27.4361, 16.2257)
+scale = Vector2(1.72676, 1.72676)
+texture = ExtResource("2_ypuk2")
+
+[node name="UpperBody" type="Sprite2D" parent="Sprite"]
+position = Vector2(5.98018, -46.3464)
+scale = Vector2(1.75234, 1.45197)
+texture = ExtResource("3_yovud")
+
+[node name="Head" type="Sprite2D" parent="Sprite"]
+position = Vector2(38.8712, -130.069)
+scale = Vector2(2.75454, 2.22876)
+texture = ExtResource("3_myggk")
 
 [node name="Shape" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_dgrws")
+position = Vector2(23, -21.5)
+shape = SubResource("RectangleShape2D_h670q")
 
 [node name="Gun Pivot" type="Node2D" parent="."]
 
 [node name="Gun" parent="Gun Pivot" instance=ExtResource("2_lkwsr")]
-position = Vector2(122, -1)
+z_index = 90
+position = Vector2(15, 2)
+scale = Vector2(0.291684, 0.291684)
+
+[node name="Hand" type="Sprite2D" parent="Gun Pivot"]
+z_index = 91
+position = Vector2(12, 5)
+rotation = 0.215863
+scale = Vector2(1.10314, 1.1544)
+texture = ExtResource("5_bpmhl")
 
 [node name="Timer" type="Timer" parent="."]
 
@@ -142,3 +122,9 @@ libraries = {
 libraries = {
 "": SubResource("AnimationLibrary_r6mpc")
 }
+
+[node name="ShootInterval" type="Timer" parent="."]
+wait_time = 0.48
+autostart = true
+
+[connection signal="timeout" from="ShootInterval" to="." method="_on_shoot_interval_timeout"]

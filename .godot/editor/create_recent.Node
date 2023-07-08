@@ -1,8 +1,13 @@
-AnimationPlayer
+TileMap
 Node2D
-RigidBody2D
+Sprite2D
 CollisionShape2D
 Area2D
-Sprite2D
+StaticBody2D
+AnimatedSprite2D
+RigidBody2D
+AnimationPlayer
+AudioStreamPlayer
+Camera2D
 Timer
 CharacterBody2D

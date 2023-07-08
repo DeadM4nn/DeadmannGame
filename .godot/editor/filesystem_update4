@@ -1,5 +1,11 @@
-res://Element/Player/Gun/default.tscn
 res://Element/Player/player.tscn
+res://Element/Player/Gun/default.tscn
 res://Element/Player/Gun/Bullet/default.tscn
 res://Element/Player/Gun/GunBehaviour.gd
 res://Element/Player/PlayerControl.gd
+res://Levels/TestLevel/node_2d.tscn
+res://default_bus_layout.tres
+res://Asset/Tile/Test_Tile/Test_Tile.tres
+res://Element/Wall/walls.tscn
+res://Element/Wall/Indestructibe.tscn
+res://Element/Wall/DestructibleBehaviour.gd

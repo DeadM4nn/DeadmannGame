@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cn1sgnrpu8265"
-path="res://.godot/imported/gun_green.png-a26cc40edc22f709934203a92fce829b.ctex"
+uid="uid://ctmymt2mq5ubk"
+path="res://.godot/imported/Destructble.png-cbff1fbdb3dfa71882bd57702bb9c26a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Asset/gun_green.png"
-dest_files=["res://.godot/imported/gun_green.png-a26cc40edc22f709934203a92fce829b.ctex"]
+source_file="res://Asset/Tile/Test_Tile/Destructble.png"
+dest_files=["res://.godot/imported/Destructble.png-cbff1fbdb3dfa71882bd57702bb9c26a.ctex"]
 
 [params]
 

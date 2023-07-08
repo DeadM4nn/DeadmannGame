@@ -1,15 +1,20 @@
 [gd_scene load_steps=3 format=3 uid="uid://dn5mpoaqcb0xq"]
 
 [ext_resource type="Script" path="res://Element/Player/Gun/GunBehaviour.gd" id="1_64w1p"]
-[ext_resource type="Texture2D" uid="uid://cn1sgnrpu8265" path="res://Asset/gun_green.png" id="2_ivg5m"]
+[ext_resource type="Texture2D" uid="uid://b8imdqn6rudig" path="res://Asset/Sprite/gun_green_default.png" id="2_2fudc"]
 
 [node name="Gun" type="Node2D"]
 script = ExtResource("1_64w1p")
 
 [node name="Texture" type="Sprite2D" parent="."]
+position = Vector2(136, -26)
 rotation = -0.00804806
 scale = Vector2(6.24346, 5.71113)
-texture = ExtResource("2_ivg5m")
+texture = ExtResource("2_2fudc")
 
 [node name="Nozzle" type="Node2D" parent="."]
-position = Vector2(109, 3)
+position = Vector2(353, -44)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.8
+autostart = true

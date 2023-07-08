@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Scientist With A GUN"
-run/main_scene="res://Element/Player/player.tscn"
+run/main_scene="res://Levels/TestLevel/node_2d.tscn"
 config/features=PackedStringArray("4.1", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -62,6 +62,8 @@ shoot={
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
 textures/default_filters/use_nearest_mipmap_filter=true
+environment/defaults/default_clear_color=Color(0.360784, 0.486275, 0.184314, 1)
