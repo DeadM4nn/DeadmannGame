@@ -1,0 +1,15 @@
+ea4bc82a6ad023ab7ee23ee620429895
+::res://::1688786211
+icon.svg::CompressedTexture2D::6928055496712576934::1688780255::1688780260::1::::<><>::
+::res://Asset/::1688786179
+gun_green.png::CompressedTexture2D::5740074486694217360::1688786394::1688786403::1::::<><>::
+::res://Element/::1688780449
+::res://Element/Player/::1688786297
+player.tscn::PackedScene::2898639757241216638::1688786297::0::1::::<><>::uid://c5yacdqextl07::::res://icon.svg<>res://Element/Player/PlayerControl.gd<>uid://dn5mpoaqcb0xq::::res://Element/Player/Gun/default.tscn
+PlayerControl.gd::GDScript::-1::1688785003::0::1::::<>CharacterBody2D<>::
+::res://Element/Player/Gun/::1688786297
+default.tscn::PackedScene::8134404477873898922::1688786297::0::1::::<><>::res://Element/Player/Gun/GunBehaviour.gd<>uid://cn1sgnrpu8265::::res://Asset/gun_green.png
+GunBehaviour.gd::GDScript::-1::1688786197::0::1::::<>Node2D<>::
+::res://Element/Player/Gun/Bullet/::1688786297
+BulletBehaviour.gd::GDScript::-1::1688783493::0::1::::<>Node2D<>::
+default.tscn::PackedScene::6665367283575022589::1688786297::0::1::::<><>::uid://c5yacdqextl07::::res://icon.svg

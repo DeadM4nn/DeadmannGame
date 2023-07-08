@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://c170vi5j4hrib"]
+
+[ext_resource type="Texture2D" uid="uid://c5yacdqextl07" path="res://icon.svg" id="1_dxdmx"]
+[ext_resource type="Script" path="res://Element/Player/Gun/Bullet/BulletBehaviour.gd" id="1_ej1o2"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ertxx"]
+
+[node name="default" type="Node2D"]
+script = ExtResource("1_ej1o2")
+
+[node name="Texture" type="Sprite2D" parent="."]
+scale = Vector2(0.643434, 0.224927)
+texture = ExtResource("1_dxdmx")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(4, 1)
+shape = SubResource("CapsuleShape2D_ertxx")

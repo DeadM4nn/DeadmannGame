@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dn5mpoaqcb0xq"]
+
+[ext_resource type="Script" path="res://Element/Player/Gun/GunBehaviour.gd" id="1_64w1p"]
+[ext_resource type="Texture2D" uid="uid://c5yacdqextl07" path="res://icon.svg" id="2_gwi71"]
+
+[node name="Gun" type="Node2D"]
+script = ExtResource("1_64w1p")
+
+[node name="Texture" type="Sprite2D" parent="."]
+scale = Vector2(0.990972, 0.350849)
+texture = ExtResource("2_gwi71")
+
+[node name="Nozzle" type="Node2D" parent="."]
+position = Vector2(63, 0)

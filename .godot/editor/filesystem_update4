@@ -1,0 +1,5 @@
+res://Element/Player/Gun/default.tscn
+res://Element/Player/player.tscn
+res://Element/Player/Gun/Bullet/default.tscn
+res://Element/Player/Gun/GunBehaviour.gd
+res://Element/Player/PlayerControl.gd
