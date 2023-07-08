@@ -89,14 +89,6 @@ func _physics_process(_delta):
 		is_flipped = false
 		
 
-#	## To push Swappables Around
-#	if is_moving: # true if collided
-#		for i in get_slide_collision_count():
-#			var col = get_slide_collision(i)
-#			if col.get_collider() is RigidBody2D:
-#				col.get_collider().apply_force(col.get_normal() * -500)
-
-
 ## Assigns the state. Please specify the state behaviour inside STATE Node
 func set_state(new_state : STATES) -> bool:
 	
@@ -146,7 +138,6 @@ func destroy_self():
 
 ## Destroy Self if Body is dangerous
 func _check_death(body):
-	print("Entered")
 	if body.is_inside_tree():
 		var parent_body = body.get_parent()
 		if parent_body is Swappable and parent_body.behaviour_value[Swappable.BEHAVIOURS.IS_DANGEROUS]:

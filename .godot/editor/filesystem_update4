@@ -1,14 +1,6 @@
-res://GameMaster.tscn
-res://Element/UI/Default_Theme.tres
-res://Element/Swappable/base_swappable.gd
 res://Element/Swappable/base_swappable.tscn
-res://Element/Player/Gun/default.tscn
-res://Element/Player/Gun/Bullet/default.tscn
-res://Levels/TestLevel/node_2d.tscn
-res://Element/UI/ui.tscn
-res://Element/Wall/Bouncer.tscn
-res://Element/Explosion/Explosion.tscn
 res://Element/Player/player.tscn
-res://Element/Player/PlayerControl.gd
-res://Element/Player/Gun/GunBehaviour.gd
 res://Element/Explosion/Death_Explosion.tscn
+res://Element/Swappable/base_swappable.gd
+res://Levels/TestLevel/node_2d.tscn
+res://Element/Player/PlayerControl.gd

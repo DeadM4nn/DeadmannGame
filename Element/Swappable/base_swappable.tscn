@@ -1,14 +1,14 @@
-[gd_scene load_steps=24 format=3 uid="uid://yfvcmsf6ldym"]
+[gd_scene load_steps=26 format=3 uid="uid://yfvcmsf6ldym"]
 
 [ext_resource type="Script" path="res://Element/Swappable/base_swappable.gd" id="1_sn41v"]
 [ext_resource type="Texture2D" uid="uid://cpvn6q40o3byt" path="res://Asset/Swappables/Bug.png" id="1_uodgk"]
 [ext_resource type="Texture2D" uid="uid://bo8x2vv0ov2ci" path="res://Asset/Sprite/Shadow.png" id="2_vqnaf"]
+[ext_resource type="Texture2D" uid="uid://b10lgryf2f00m" path="res://Asset/Sprite/Skull.png" id="4_dw7a1"]
 [ext_resource type="Texture2D" uid="uid://bl5ufipwdswcv" path="res://Asset/Sprite/Chat.png" id="4_iswoc"]
 [ext_resource type="AudioStream" uid="uid://wd8rug5b1g0x" path="res://SoundFX/Kenny/highUp.ogg" id="5_ptr2d"]
 [ext_resource type="AudioStream" uid="uid://dcxgse1hoo20i" path="res://SoundFX/Kenny/highDown.ogg" id="6_qc57a"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_cu6ri"]
-bounce = 1.0
 
 [sub_resource type="Shader" id="Shader_vr1m6"]
 code = "shader_type canvas_item;
@@ -36,7 +36,7 @@ noise = SubResource("FastNoiseLite_vvall")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_blx8c"]
 shader = SubResource("Shader_vr1m6")
-shader_parameter/dissolve_value = 1.0
+shader_parameter/dissolve_value = 0.341
 shader_parameter/dissolve_texture = SubResource("NoiseTexture2D_fe0jd")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_u352e"]
@@ -160,12 +160,16 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_el2j4"]
 radius = 63.3877
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2vmo7"]
+size = Vector2(122, 134)
+
 [node name="BaseSwappable" type="RigidBody2D"]
 collision_layer = 2147483648
 collision_mask = 2
 physics_material_override = SubResource("PhysicsMaterial_cu6ri")
 gravity_scale = 0.0
 lock_rotation = true
+freeze = true
 script = ExtResource("1_sn41v")
 dangerous = true
 jump_force = 100.0
@@ -183,10 +187,17 @@ texture = ExtResource("2_vqnaf")
 
 [node name="Sprite" type="Sprite2D" parent="Sprite"]
 material = SubResource("ShaderMaterial_blx8c")
+use_parent_material = true
 texture = ExtResource("1_uodgk")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Skull" type="Sprite2D" parent="Sprite/Sprite"]
 visible = false
+position = Vector2(0.446114, 1.93689)
+scale = Vector2(0.703242, 0.703242)
+texture = ExtResource("4_dw7a1")
+offset = Vector2(-28.695, 17.47)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(1.17023, 1.17023)
 shape = SubResource("CircleShape2D_u352e")
 
@@ -196,8 +207,7 @@ wait_time = 0.2
 autostart = true
 
 [node name="EyeSight" type="Area2D" parent="."]
-visible = false
-collision_mask = 16777216
+collision_mask = 16777217
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EyeSight"]
 shape = SubResource("CircleShape2D_30520")
@@ -236,7 +246,6 @@ stream = ExtResource("5_ptr2d")
 stream = ExtResource("6_qc57a")
 
 [node name="Touch" type="Area2D" parent="."]
-visible = false
 collision_layer = 128
 collision_mask = 64
 
@@ -244,7 +253,13 @@ collision_mask = 64
 visible = false
 shape = SubResource("CircleShape2D_el2j4")
 
+[node name="Wall" type="StaticBody2D" parent="."]
+collision_layer = 2
+
+[node name="Shape" type="CollisionShape2D" parent="Wall"]
+shape = SubResource("RectangleShape2D_2vmo7")
+
 [connection signal="timeout" from="JumpInterval" to="." method="jump"]
 [connection signal="body_entered" from="EyeSight" to="." method="_check_body_entered_for_player"]
 [connection signal="body_exited" from="EyeSight" to="." method="_forget_player"]
-[connection signal="body_entered" from="Touch" to="." method="_on_touch"]
+[connection signal="area_entered" from="Touch" to="." method="_on_touch"]
