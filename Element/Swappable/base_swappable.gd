@@ -11,6 +11,8 @@ signal danger_touched_player
 @export var dangerous : bool = false
 @export var voletile : bool = false
 @export var wall : bool = false
+@export var pickup : bool = false
+@export var trophy : bool = false
 
 
 @export_category("Swappable Base Property")
@@ -32,6 +34,8 @@ enum BEHAVIOURS {
 	IS_DANGEROUS,
 	IS_VOLETILE,
 	IS_WALL,
+	IS_PICKUP,
+	IS_TROPHY,
 }
 
 var behaviour_value : Dictionary = {
@@ -39,7 +43,9 @@ var behaviour_value : Dictionary = {
 	BEHAVIOURS.IS_CHASING : false, # Makes Incremental Movement Towars The Player
 	BEHAVIOURS.IS_DANGEROUS : false, 
 	BEHAVIOURS.IS_VOLETILE : false,
-	BEHAVIOURS.IS_WALL : false
+	BEHAVIOURS.IS_WALL : false,
+	BEHAVIOURS.IS_PICKUP : false,
+	BEHAVIOURS.IS_TROPHY : false,
 }
 
 # Called when the node enters the scene tree for the first time.
@@ -49,6 +55,9 @@ func _ready():
 	behaviour_value[BEHAVIOURS.IS_DANGEROUS] = dangerous
 	behaviour_value[BEHAVIOURS.IS_VOLETILE] = voletile
 	behaviour_value[BEHAVIOURS.IS_WALL] = wall
+	behaviour_value[BEHAVIOURS.IS_PICKUP] = pickup
+	behaviour_value[BEHAVIOURS.IS_TROPHY] = trophy
+	
 	
 	set_behaviour()
 
@@ -104,7 +113,12 @@ func set_behaviour():
 	else:
 		freeze = false
 		$Wall/Shape.call_deferred("set_disabled", true)
-
+	
+	# If the Swapppable is 
+	if behaviour_value[BEHAVIOURS.IS_TROPHY]:
+		$Crown.visible = true
+	else:
+		$Crown.visible = false
 
 
 func jump():
@@ -135,7 +149,6 @@ func _forget_player(body):
 
 ## If Player Touches Item
 func _on_touch(body):
-	print("Entered")
 	if behaviour_value[BEHAVIOURS.IS_VOLETILE]:
 		destroy_self()
 
@@ -151,3 +164,8 @@ func destroy_self():
 	get_tree().root.add_child(explosion)
 	
 	queue_free()
+
+## Returns the swappable sprite
+func pickup_swappable() -> Texture2D:
+	queue_free()
+	return get_node("Sprite/Sprite").texture

@@ -1,12 +1,16 @@
-[gd_scene load_steps=20 format=3 uid="uid://bhkef5lt78nba"]
+[gd_scene load_steps=24 format=3 uid="uid://bhkef5lt78nba"]
 
 [ext_resource type="Script" path="res://Element/Player/PlayerControl.gd" id="1_hsark"]
 [ext_resource type="PackedScene" uid="uid://dn5mpoaqcb0xq" path="res://Element/Player/Gun/default.tscn" id="2_lkwsr"]
 [ext_resource type="Texture2D" uid="uid://y4dcnudkklbd" path="res://Asset/Bot/Lower Body.png" id="2_ypuk2"]
 [ext_resource type="Texture2D" uid="uid://dw32q7xjfwf1n" path="res://Asset/Bot/head.png" id="3_myggk"]
 [ext_resource type="Texture2D" uid="uid://6fdrfwdjrc3f" path="res://Asset/Bot/Upper Body.png" id="3_yovud"]
+[ext_resource type="Texture2D" uid="uid://dttqnvy08xeea" path="res://Asset/Bot/Wires.png" id="4_if2xq"]
 [ext_resource type="Texture2D" uid="uid://dh21wgktj7ofs" path="res://Asset/Bot/Hand.png" id="5_bpmhl"]
+[ext_resource type="Texture2D" uid="uid://n72sunuti4ao" path="res://Asset/Swappables/Door.png" id="5_myi61"]
 [ext_resource type="Texture2D" uid="uid://bo8x2vv0ov2ci" path="res://Asset/Sprite/Shadow.png" id="5_roufa"]
+[ext_resource type="Texture2D" uid="uid://bn3vlr6lwsubw" path="res://Asset/Bot/WireWraped.png" id="6_vy75x"]
+[ext_resource type="AudioStream" uid="uid://7maasely6w30" path="res://SoundFX/Kenny/pepSound5.ogg" id="11_m0v06"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1iahm"]
 radius = 50.0
@@ -228,9 +232,27 @@ scale = Vector2(1.72676, 1.72676)
 texture = ExtResource("2_ypuk2")
 
 [node name="UpperBody" type="Sprite2D" parent="Sprite"]
-position = Vector2(-32, -7)
+position = Vector2(-16, -7)
 scale = Vector2(1.31234, 1.08739)
 texture = ExtResource("3_yovud")
+
+[node name="Wire" type="Sprite2D" parent="Sprite/UpperBody"]
+z_index = -1
+position = Vector2(-21.3359, 0)
+texture = ExtResource("4_if2xq")
+
+[node name="Item" type="Sprite2D" parent="Sprite/UpperBody"]
+visible = false
+z_index = -2
+position = Vector2(-22.0979, -18.3927)
+scale = Vector2(1.32138, 1.32138)
+texture = ExtResource("5_myi61")
+
+[node name="Wrap" type="Sprite2D" parent="Sprite/UpperBody/Item"]
+z_index = 1
+position = Vector2(-9.96368, 4.0083)
+scale = Vector2(1.06139, 1.23325)
+texture = ExtResource("6_vy75x")
 
 [node name="Camera2D" type="Camera2D" parent="Sprite"]
 position = Vector2(15, -63)
@@ -279,6 +301,7 @@ scale = Vector2(1.10314, 1.1544)
 texture = ExtResource("5_bpmhl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, -24)
 shape = SubResource("CapsuleShape2D_1iahm")
 
@@ -303,8 +326,15 @@ collision_layer = 64
 collision_mask = 128
 
 [node name="Shape" type="CollisionShape2D" parent="Touch"]
+visible = false
 shape = SubResource("CircleShape2D_g2e47")
 
+[node name="Audio" type="Node" parent="."]
+
+[node name="Pickup" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("11_m0v06")
+
+[connection signal="win_game" from="." to="." method="_on_win_game"]
 [connection signal="timeout" from="ShootInterval" to="." method="_on_shoot_interval_timeout"]
 [connection signal="area_entered" from="Touch" to="." method="_check_death"]
 

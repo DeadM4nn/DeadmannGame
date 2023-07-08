@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://yfvcmsf6ldym"]
+[gd_scene load_steps=27 format=3 uid="uid://yfvcmsf6ldym"]
 
 [ext_resource type="Script" path="res://Element/Swappable/base_swappable.gd" id="1_sn41v"]
 [ext_resource type="Texture2D" uid="uid://cpvn6q40o3byt" path="res://Asset/Swappables/Bug.png" id="1_uodgk"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bl5ufipwdswcv" path="res://Asset/Sprite/Chat.png" id="4_iswoc"]
 [ext_resource type="AudioStream" uid="uid://wd8rug5b1g0x" path="res://SoundFX/Kenny/highUp.ogg" id="5_ptr2d"]
 [ext_resource type="AudioStream" uid="uid://dcxgse1hoo20i" path="res://SoundFX/Kenny/highDown.ogg" id="6_qc57a"]
+[ext_resource type="PackedScene" uid="uid://h2vv2wukv8vf" path="res://Element/Swappable/crown.tscn" id="8_uain4"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_cu6ri"]
 
@@ -43,7 +44,7 @@ shader_parameter/dissolve_texture = SubResource("NoiseTexture2D_fe0jd")
 radius = 52.1895
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_30520"]
-radius = 601.202
+radius = 1413.24
 
 [sub_resource type="Animation" id="Animation_rmpsy"]
 resource_name = "Flap_Wings"
@@ -172,6 +173,7 @@ lock_rotation = true
 freeze = true
 script = ExtResource("1_sn41v")
 dangerous = true
+pickup = true
 jump_force = 100.0
 
 [node name="Sprite" type="Node2D" parent="."]
@@ -198,6 +200,7 @@ texture = ExtResource("4_dw7a1")
 offset = Vector2(-28.695, 17.47)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 scale = Vector2(1.17023, 1.17023)
 shape = SubResource("CircleShape2D_u352e")
 
@@ -210,6 +213,7 @@ autostart = true
 collision_mask = 16777217
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EyeSight"]
+visible = false
 shape = SubResource("CircleShape2D_30520")
 
 [node name="Point_to_player" type="Node2D" parent="."]
@@ -257,7 +261,12 @@ shape = SubResource("CircleShape2D_el2j4")
 collision_layer = 2
 
 [node name="Shape" type="CollisionShape2D" parent="Wall"]
+visible = false
 shape = SubResource("RectangleShape2D_2vmo7")
+
+[node name="Crown" parent="." instance=ExtResource("8_uain4")]
+position = Vector2(0, -62)
+scale = Vector2(4.4549, 4.4549)
 
 [connection signal="timeout" from="JumpInterval" to="." method="jump"]
 [connection signal="body_entered" from="EyeSight" to="." method="_check_body_entered_for_player"]

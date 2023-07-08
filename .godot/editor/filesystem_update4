@@ -1,6 +1,9 @@
 res://Element/Swappable/base_swappable.tscn
 res://Element/Player/player.tscn
 res://Element/Explosion/Death_Explosion.tscn
-res://Element/Swappable/base_swappable.gd
 res://Levels/TestLevel/node_2d.tscn
+res://Element/Swappable/crown.tscn
+res://Element/Explosion/Explosion.tscn
+res://Element/Swappable/base_swappable.gd
 res://Element/Player/PlayerControl.gd
+res://Element/Player/Gun/Bullet/default.tscn

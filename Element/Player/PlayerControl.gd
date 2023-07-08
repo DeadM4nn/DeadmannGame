@@ -1,5 +1,7 @@
 class_name Player extends CharacterBody2D
 
+signal win_game
+
 @export_category("Camera Zoom")
 @export var ZOOM_MAX : float = 1.4
 @export var ZOOM_MIN : float = 0.3
@@ -26,6 +28,10 @@ const ANIMATION_STATES : Dictionary = {
 	STATES.IDLE : "IDLE", 
 	STATES.WALKING : "WALKING",
 }
+
+
+## Holds the texture of a Holdable
+var hold_slot : Texture2D = null : set = set_hold
 
 
 ## Gun Node
@@ -136,9 +142,29 @@ func destroy_self():
 	
 	queue_free()
 
+
 ## Destroy Self if Body is dangerous
 func _check_death(body):
 	if body.is_inside_tree():
 		var parent_body = body.get_parent()
-		if parent_body is Swappable and parent_body.behaviour_value[Swappable.BEHAVIOURS.IS_DANGEROUS]:
-			destroy_self()
+
+		if parent_body is Swappable:
+			var swap_Behave : Dictionary = parent_body.behaviour_value
+			if swap_Behave[Swappable.BEHAVIOURS.IS_DANGEROUS]:
+				destroy_self()
+			elif swap_Behave[Swappable.BEHAVIOURS.IS_TROPHY]:
+				win_game.emit()
+			elif swap_Behave[Swappable.BEHAVIOURS.IS_PICKUP]:
+				$Audio/Pickup.play()
+				set_hold(parent_body.pickup_swappable())
+				
+
+
+## Bot is picking up
+func set_hold(value):
+	if value != null and is_inside_tree():
+		$Sprite/UpperBody/Item.texture = value
+		$Sprite/UpperBody/Item.visible = true
+	elif value == null and is_inside_tree():
+		$Sprite/UpperBody/Item.visible = false
+	hold_slot = value

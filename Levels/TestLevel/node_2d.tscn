@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://hogivbn4mial"]
+[gd_scene load_steps=13 format=3 uid="uid://hogivbn4mial"]
 
 [ext_resource type="PackedScene" uid="uid://bhkef5lt78nba" path="res://Element/Player/player.tscn" id="1_hriob"]
 [ext_resource type="Texture2D" uid="uid://cqqjvf50n73a3" path="res://Asset/Tile/Dungeon Tile/Floor 3x3.png" id="2_4p27a"]
 [ext_resource type="Texture2D" uid="uid://b88or3ta17n6r" path="res://Asset/Tile/Dungeon Tile/Wall.png" id="2_pkxy5"]
 [ext_resource type="Texture2D" uid="uid://n72sunuti4ao" path="res://Asset/Swappables/Door.png" id="4_pkjrc"]
+[ext_resource type="PackedScene" uid="uid://h2vv2wukv8vf" path="res://Element/Swappable/crown.tscn" id="5_rmpp6"]
 [ext_resource type="PackedScene" uid="uid://d2jbto42a77b2" path="res://Element/Bouncer.tscn" id="5_vu8g6"]
 [ext_resource type="PackedScene" uid="uid://yfvcmsf6ldym" path="res://Element/Swappable/base_swappable.tscn" id="6_ukruq"]
 [ext_resource type="PackedScene" uid="uid://c2qy74u4hqxla" path="res://Element/Wall/Bouncer.tscn" id="7_hyvd4"]
@@ -76,9 +77,15 @@ layer_1/tile_data = PackedInt32Array(-131069, 1, 0, -65533, 1, 0, 3, 1, 0, 65539
 [node name="Player" parent="." instance=ExtResource("1_hriob")]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(1128, -279)
+position = Vector2(1856, -323)
 scale = Vector2(2.21786, 2.21786)
 texture = ExtResource("4_pkjrc")
+
+[node name="Crown" parent="Sprite2D" instance=ExtResource("5_rmpp6")]
+z_index = 90
+z_as_relative = false
+position = Vector2(0, -40.5797)
+scale = Vector2(2.35265, 2.35265)
 
 [node name="Bouncer" parent="." instance=ExtResource("5_vu8g6")]
 position = Vector2(1673, -143)
@@ -88,6 +95,7 @@ scale = Vector2(2.34623, 1.13152)
 position = Vector2(994, 35)
 flying = true
 dangerous = false
+trophy = true
 
 [node name="Fly2" parent="." instance=ExtResource("6_ukruq")]
 position = Vector2(1168, 139)
@@ -103,6 +111,7 @@ wall = true
 position = Vector2(1487, 349)
 dangerous = false
 voletile = true
+trophy = true
 
 [node name="Industructibe" parent="." instance=ExtResource("7_hyvd4")]
 position = Vector2(178, 47)

@@ -1,0 +1,102 @@
+[gd_scene load_steps=8 format=3 uid="uid://brwup52gkmid5"]
+
+[ext_resource type="Texture2D" uid="uid://codcjkedjagma" path="res://Asset/Sprite/bullet_default.png" id="1_xqscq"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bq0gq"]
+bounce = 1.0
+
+[sub_resource type="GDScript" id="GDScript_joihv"]
+script/source = "extends RigidBody2D
+
+const EXPLOSION_INSTANCE : PackedScene = preload(\"res://Element/Explosion/Explosion.tscn\")
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	$Spin.play(\"BulletSpin\")
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+
+
+# Destroy Self 
+func _on_hit(body):
+	if not body is Bouncer:
+		queue_free()
+		var curr_explosion = EXPLOSION_INSTANCE.instantiate()
+		get_tree().root.add_child(curr_explosion)
+		curr_explosion.global_position = global_position
+"
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ertxx"]
+radius = 5.00159
+height = 14.2323
+
+[sub_resource type="Animation" id="Animation_3ruqp"]
+resource_name = "BulletSpin"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
+[sub_resource type="Animation" id="Animation_vla64"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7bvjm"]
+_data = {
+"BulletSpin": SubResource("Animation_3ruqp"),
+"RESET": SubResource("Animation_vla64")
+}
+
+[node name="default" type="RigidBody2D"]
+collision_layer = 16
+collision_mask = 2147483650
+mass = 0.5
+physics_material_override = SubResource("PhysicsMaterial_bq0gq")
+gravity_scale = 0.0
+max_contacts_reported = 1
+contact_monitor = true
+script = SubResource("GDScript_joihv")
+
+[node name="Texture" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = ExtResource("1_xqscq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(-3.99873, 2.95103)
+shape = SubResource("CapsuleShape2D_ertxx")
+
+[node name="Spin" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Texture")
+speed_scale = 5.0
+libraries = {
+"": SubResource("AnimationLibrary_7bvjm")
+}
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[connection signal="body_entered" from="." to="." method="_on_hit"]
