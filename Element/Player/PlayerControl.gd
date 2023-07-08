@@ -21,6 +21,9 @@ const ANIMATION_STATES : Dictionary = {
 }
 
 
+## Gun Node
+@onready var gun : Node2D = get_node("Gun Pivot/GunAndHand/Gun")
+
 ## Player state
 var state : STATES : set = set_state
 
@@ -69,12 +72,15 @@ func _physics_process(_delta):
 	## Flips based on mouse Movement
 	if get_global_mouse_position() < global_position and not is_flipped :
 		$"Gun Pivot/GunAndHand".scale.y *= -1
-		$Sprite.scale.x *= -1
+		$Flip.play("RIGHT")
+#		$Sprite.scale.x *= -1
 		is_flipped = true
 	elif get_global_mouse_position() >= global_position and is_flipped:
 		$"Gun Pivot/GunAndHand".scale.y *= -1
-		$Sprite.scale.x *= -1
+		$Flip.play("LEFT")
+#		$Sprite.scale.x *= -1
 		is_flipped = false
+
 
 ## Assigns the state. Please specify the state behaviour inside STATE Node
 func set_state(new_state : STATES) -> bool:
@@ -90,6 +96,7 @@ func set_state(new_state : STATES) -> bool:
 		return false
 
 
-## Shoots the gun on interval
-func _on_shoot_interval_timeout():
-	$"Gun Pivot/GunAndHand/Gun".shoot($"Gun Pivot".rotation)
+
+func _unhandled_input(event):
+	if event.is_action_pressed("shoot"):
+		gun.shoot($"Gun Pivot".rotation)

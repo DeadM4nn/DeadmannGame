@@ -1,7 +1,7 @@
 [gd_resource type="TileSet" load_steps=4 format=3 uid="uid://n5n2pcck1t0w"]
 
-[ext_resource type="PackedScene" uid="uid://dkhwsbjon1rwd" path="res://Element/Wall/walls.tscn" id="1_7jnic"]
-[ext_resource type="PackedScene" uid="uid://c2qy74u4hqxla" path="res://Element/Wall/Indestructibe.tscn" id="2_57bly"]
+[ext_resource type="PackedScene" path="res://Element/Wall/walls.tscn" id="1_7jnic"]
+[ext_resource type="PackedScene" uid="uid://c2qy74u4hqxla" path="res://Element/Wall/Bouncer.tscn" id="2_57bly"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_2urcj"]
 resource_name = "Walls"

@@ -1,0 +1,1 @@
+class_name Bouncer extends StaticBody2D

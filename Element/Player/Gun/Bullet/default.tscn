@@ -1,10 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://c170vi5j4hrib"]
+[gd_scene load_steps=8 format=3 uid="uid://c170vi5j4hrib"]
 
 [ext_resource type="Texture2D" uid="uid://codcjkedjagma" path="res://Asset/Sprite/bullet_default.png" id="1_wse5y"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bq0gq"]
+bounce = 1.0
 
 [sub_resource type="GDScript" id="GDScript_joihv"]
 script/source = "extends RigidBody2D
 
+const EXPLOSION_INSTANCE : PackedScene = preload(\"res://Element/Explosion/Explosion.tscn\")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -18,7 +22,11 @@ func _process(delta):
 
 # Destroy Self 
 func _on_hit(body):
-	queue_free()
+	if not body is Bouncer:
+		queue_free()
+		var curr_explosion = EXPLOSION_INSTANCE.instantiate()
+		get_tree().root.add_child(curr_explosion)
+		curr_explosion.global_position = global_position
 "
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ertxx"]
@@ -65,6 +73,7 @@ _data = {
 [node name="default" type="RigidBody2D"]
 collision_layer = 48
 mass = 0.5
+physics_material_override = SubResource("PhysicsMaterial_bq0gq")
 gravity_scale = 0.0
 max_contacts_reported = 1
 contact_monitor = true

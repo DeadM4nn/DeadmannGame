@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bhkef5lt78nba"]
+[gd_scene load_steps=18 format=3 uid="uid://bhkef5lt78nba"]
 
 [ext_resource type="Script" path="res://Element/Player/PlayerControl.gd" id="1_hsark"]
 [ext_resource type="PackedScene" uid="uid://dn5mpoaqcb0xq" path="res://Element/Player/Gun/default.tscn" id="2_lkwsr"]
@@ -15,14 +15,14 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite/Move:position")
+tracks/0/path = NodePath("Sprite/Move/Legs:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(3.16745, 10.2708)]
+"values": [Vector2(-26.1181, 6.44414)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -44,14 +44,14 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite/Move:position")
+tracks/0/path = NodePath("Sprite/Move/Legs:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(3.16745, 10.2708), Vector2(-8.97027, 7.47522), Vector2(1.49504, 8.97027)]
+"values": [Vector2(-26.1181, 6.44414), Vector2(-26.1181, -5.81951), Vector2(-26.1181, 13.2573), Vector2(-26.1181, -0.368999), Vector2(-26.1181, 14.6199)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -60,10 +60,10 @@ tracks/1/path = NodePath("Sprite/Head:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5, 1, 1.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(11.9604, -14.9504), Vector2(1.49504, 20.9306), Vector2(11.9604, -14.9504)]
+"values": [Vector2(0, 0), Vector2(1, 13), Vector2(2, -7), Vector2(4, 12), Vector2(0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qdh2j"]
@@ -114,28 +114,119 @@ _data = {
 "WALKING": SubResource("Animation_5m6e8")
 }
 
+[sub_resource type="Animation" id="Animation_suyob"]
+resource_name = "LEFT"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Gun Pivot:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-33, -1)]
+}
+
+[sub_resource type="Animation" id="Animation_7xlyf"]
+resource_name = "RIGHT"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Gun Pivot:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(33, -1)]
+}
+
+[sub_resource type="Animation" id="Animation_bfiiw"]
+resource_name = "RESET"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Gun Pivot:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-33, -1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sd2h6"]
+_data = {
+"LEFT": SubResource("Animation_suyob"),
+"RESET": SubResource("Animation_bfiiw"),
+"RIGHT": SubResource("Animation_7xlyf")
+}
+
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 8
 script = ExtResource("1_hsark")
 
 [node name="Sprite" type="Node2D" parent="."]
-scale = Vector2(0.668876, 0.668876)
+position = Vector2(1, 0)
 
 [node name="Move" type="Node2D" parent="Sprite"]
 position = Vector2(3.16745, 10.2708)
+scale = Vector2(0.733876, 0.733876)
 
 [node name="Legs" type="Sprite2D" parent="Sprite/Move"]
-position = Vector2(27.4361, 16.2257)
+position = Vector2(-26.1181, 6.44414)
 scale = Vector2(1.72676, 1.72676)
 texture = ExtResource("2_ypuk2")
 
 [node name="UpperBody" type="Sprite2D" parent="Sprite"]
-position = Vector2(8.17787, -0.414333)
-scale = Vector2(1.75234, 1.45197)
+position = Vector2(-32, -7)
+scale = Vector2(1.31234, 1.08739)
 texture = ExtResource("3_yovud")
 
 [node name="Camera2D" type="Camera2D" parent="Sprite"]
-position = Vector2(49.3365, -71.7622)
+position = Vector2(15, -63)
 scale = Vector2(1.49504, 1.49504)
 zoom = Vector2(0.6, 0.6)
 position_smoothing_enabled = true
@@ -143,12 +234,12 @@ position_smoothing_enabled = true
 [node name="Head" type="Node2D" parent="Sprite"]
 
 [node name="HeadSprite" type="Sprite2D" parent="Sprite/Head"]
-position = Vector2(41.0689, -84.1368)
-scale = Vector2(2.75454, 2.22876)
+position = Vector2(-3, -58)
+scale = Vector2(1.821, 1.32181)
 texture = ExtResource("3_myggk")
 
 [node name="Shape" type="CollisionShape2D" parent="."]
-position = Vector2(26, -25)
+position = Vector2(0, -25)
 shape = SubResource("RectangleShape2D_h670q")
 
 [node name="Timer" type="Timer" parent="."]
@@ -168,6 +259,7 @@ libraries = {
 wait_time = 0.48
 
 [node name="Gun Pivot" type="Node2D" parent="."]
+position = Vector2(-33, -1)
 
 [node name="GunAndHand" type="Node2D" parent="Gun Pivot"]
 
@@ -183,4 +275,11 @@ rotation = -0.00268751
 scale = Vector2(1.10314, 1.1544)
 texture = ExtResource("5_bpmhl")
 
+[node name="Flip" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_sd2h6")
+}
+
 [connection signal="timeout" from="ShootInterval" to="." method="_on_shoot_interval_timeout"]
+
+[editable path="Gun Pivot/GunAndHand/Gun"]

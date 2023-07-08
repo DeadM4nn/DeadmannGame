@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cwqlq07b30la8"]
+
+[ext_resource type="PackedScene" uid="uid://c2qy74u4hqxla" path="res://Element/Wall/Bouncer.tscn" id="2_qt5cp"]
+[ext_resource type="PackedScene" uid="uid://hogivbn4mial" path="res://Levels/TestLevel/node_2d.tscn" id="2_ttdpv"]
+
+[node name="GameMaster" type="Node"]
+
+[node name="Node2D" parent="." instance=ExtResource("2_ttdpv")]
+
+[node name="Industructibe" parent="Node2D" instance=ExtResource("2_qt5cp")]
+position = Vector2(1297, 143)
+rotation = -0.837234
+scale = Vector2(3.28, 1)
