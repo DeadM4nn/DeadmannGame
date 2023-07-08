@@ -1,4 +1,9 @@
-extends CharacterBody2D
+class_name Player extends CharacterBody2D
+
+@export_category("Camera Zoom")
+@export var ZOOM_MAX : float = 1.4
+@export var ZOOM_MIN : float = 0.3
+@export var ZOOM_RATE : float = 0.1
 
 ## States of the Player
 enum STATES {
@@ -12,6 +17,8 @@ const FLOW_STATES : Dictionary = {
 	STATES.WALKING : [STATES.IDLE],
 }
 
+
+## Keeps track if the body is flipped
 var is_flipped : bool = false
 
 ## States of the Player
@@ -23,6 +30,9 @@ const ANIMATION_STATES : Dictionary = {
 
 ## Gun Node
 @onready var gun : Node2D = get_node("Gun Pivot/GunAndHand/Gun")
+
+## Gun Node
+@onready var camera : Node2D = get_node("Sprite/Camera2D")
 
 ## Player state
 var state : STATES : set = set_state
@@ -66,9 +76,6 @@ func _physics_process(_delta):
 		state = STATES.WALKING
 	
 	
-	## Flips the character if  mouse is on the left side
-	print($"Gun Pivot".rotation_degrees)
-	
 	## Flips based on mouse Movement
 	if get_global_mouse_position() < global_position and not is_flipped :
 		$"Gun Pivot/GunAndHand".scale.y *= -1
@@ -82,12 +89,12 @@ func _physics_process(_delta):
 		is_flipped = false
 		
 
-	## To push Swappables Around
-	if is_moving: # true if collided
-		for i in get_slide_collision_count():
-			var col = get_slide_collision(i)
-			if col.get_collider() is RigidBody2D:
-				col.get_collider().apply_force(col.get_normal() * -500)
+#	## To push Swappables Around
+#	if is_moving: # true if collided
+#		for i in get_slide_collision_count():
+#			var col = get_slide_collision(i)
+#			if col.get_collider() is RigidBody2D:
+#				col.get_collider().apply_force(col.get_normal() * -500)
 
 
 ## Assigns the state. Please specify the state behaviour inside STATE Node
@@ -104,7 +111,43 @@ func set_state(new_state : STATES) -> bool:
 		return false
 
 
-
 func _unhandled_input(event):
 	if event.is_action_pressed("shoot"):
 		gun.shoot($"Gun Pivot".rotation)
+	
+	var zoom_amount : Vector2 =  camera.get_zoom()
+	
+	# Zooms the Camera
+	if event.is_action_pressed("zoom_in"):
+		zoom_amount += Vector2(ZOOM_RATE, ZOOM_RATE)
+
+	elif event.is_action_pressed("zoom_out"):
+		zoom_amount -= Vector2(ZOOM_RATE, ZOOM_RATE)
+	
+	zoom_amount = zoom_amount.clamp(Vector2(ZOOM_MIN, ZOOM_MIN), Vector2(ZOOM_MAX, ZOOM_MAX))
+	camera.set_zoom(zoom_amount)
+	
+	if event.is_action_pressed("test_button"):
+		destroy_self()
+
+
+
+func destroy_self():
+	## Load explood
+	var explosion = preload("res://Element/Explosion/Explosion.tscn").instantiate()
+	
+	## Put Explosion
+	explosion.global_position = global_position
+	
+	## Exist Explosion
+	get_tree().root.add_child(explosion)
+	
+	queue_free()
+
+## Destroy Self if Body is dangerous
+func _check_death(body):
+	print("Entered")
+	if body.is_inside_tree():
+		var parent_body = body.get_parent()
+		if parent_body is Swappable and parent_body.behaviour_value[Swappable.BEHAVIOURS.IS_DANGEROUS]:
+			destroy_self()

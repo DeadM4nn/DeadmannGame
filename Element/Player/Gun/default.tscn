@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dn5mpoaqcb0xq"]
+[gd_scene load_steps=4 format=3 uid="uid://dn5mpoaqcb0xq"]
 
 [ext_resource type="Script" path="res://Element/Player/Gun/GunBehaviour.gd" id="1_64w1p"]
 [ext_resource type="Texture2D" uid="uid://b8imdqn6rudig" path="res://Asset/Sprite/gun_green_default.png" id="2_2fudc"]
+[ext_resource type="AudioStream" uid="uid://vou4bvtpwq0" path="res://SoundFX/Kenny/pepSound3.ogg" id="3_w8oad"]
 
 [node name="Gun" type="Node2D"]
 script = ExtResource("1_64w1p")
@@ -18,3 +19,9 @@ position = Vector2(353, -44)
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.8
 autostart = true
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="Shoot" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("3_w8oad")
+pitch_scale = 1.33

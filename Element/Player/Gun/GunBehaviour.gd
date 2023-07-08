@@ -19,6 +19,8 @@ func _ready():
 func shoot( pivot_rotation : float = 0.00, curr_bull_speed : float = bullet_speed) -> void:
 	var curr_bullet = BULLET_FILE.instantiate()
 	
+	$Audio/Shoot.play()
+	
 	curr_bullet.position = $Nozzle.global_position
 	curr_bullet.global_rotation = global_rotation
 	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bhkef5lt78nba"]
+[gd_scene load_steps=20 format=3 uid="uid://bhkef5lt78nba"]
 
 [ext_resource type="Script" path="res://Element/Player/PlayerControl.gd" id="1_hsark"]
 [ext_resource type="PackedScene" uid="uid://dn5mpoaqcb0xq" path="res://Element/Player/Gun/default.tscn" id="2_lkwsr"]
@@ -7,6 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://6fdrfwdjrc3f" path="res://Asset/Bot/Upper Body.png" id="3_yovud"]
 [ext_resource type="Texture2D" uid="uid://dh21wgktj7ofs" path="res://Asset/Bot/Hand.png" id="5_bpmhl"]
 [ext_resource type="Texture2D" uid="uid://bo8x2vv0ov2ci" path="res://Asset/Sprite/Shadow.png" id="5_roufa"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1iahm"]
+radius = 50.0
+height = 128.0
 
 [sub_resource type="Animation" id="Animation_a6fr2"]
 length = 0.001
@@ -202,13 +206,13 @@ _data = {
 "RIGHT": SubResource("Animation_7xlyf")
 }
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1iahm"]
-radius = 50.0
-height = 128.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_g2e47"]
+radius = 63.3877
 
 [node name="Player" type="CharacterBody2D"]
-collision_layer = 8
+collision_mask = 2
 script = ExtResource("1_hsark")
+ZOOM_MAX = 2.0
 
 [node name="Sprite" type="Node2D" parent="."]
 position = Vector2(1, 0)
@@ -230,7 +234,7 @@ texture = ExtResource("3_yovud")
 [node name="Camera2D" type="Camera2D" parent="Sprite"]
 position = Vector2(15, -63)
 scale = Vector2(1.49504, 1.49504)
-zoom = Vector2(0.6, 0.6)
+zoom = Vector2(0.595, 0.595)
 position_smoothing_enabled = true
 
 [node name="Head" type="Node2D" parent="Sprite"]
@@ -250,17 +254,6 @@ texture = ExtResource("5_roufa")
 
 [node name="Timer" type="Timer" parent="."]
 
-[node name="Animation" type="AnimationPlayer" parent="."]
-speed_scale = 4.0
-libraries = {
-"": SubResource("AnimationLibrary_qdh2j")
-}
-
-[node name="States" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_r6mpc")
-}
-
 [node name="ShootInterval" type="Timer" parent="."]
 wait_time = 0.48
 
@@ -274,6 +267,9 @@ z_index = 90
 position = Vector2(15, -5)
 scale = Vector2(0.291684, 0.291684)
 
+[node name="Nozzle" parent="Gun Pivot/GunAndHand/Gun" index="1"]
+position = Vector2(394.262, -44)
+
 [node name="Hand" type="Sprite2D" parent="Gun Pivot/GunAndHand"]
 z_index = 91
 position = Vector2(14, 3)
@@ -281,15 +277,34 @@ rotation = -0.00268751
 scale = Vector2(1.10314, 1.1544)
 texture = ExtResource("5_bpmhl")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -24)
+shape = SubResource("CapsuleShape2D_1iahm")
+
+[node name="Animation" type="AnimationPlayer" parent="."]
+speed_scale = 4.0
+libraries = {
+"": SubResource("AnimationLibrary_qdh2j")
+}
+
+[node name="States" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_r6mpc")
+}
+
 [node name="Flip" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_sd2h6")
 }
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -24)
-shape = SubResource("CapsuleShape2D_1iahm")
+[node name="Touch" type="Area2D" parent="."]
+collision_layer = 64
+collision_mask = 128
+
+[node name="Shape" type="CollisionShape2D" parent="Touch"]
+shape = SubResource("CircleShape2D_g2e47")
 
 [connection signal="timeout" from="ShootInterval" to="." method="_on_shoot_interval_timeout"]
+[connection signal="area_entered" from="Touch" to="." method="_check_death"]
 
 [editable path="Gun Pivot/GunAndHand/Gun"]

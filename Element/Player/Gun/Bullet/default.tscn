@@ -71,7 +71,8 @@ _data = {
 }
 
 [node name="default" type="RigidBody2D"]
-collision_layer = 48
+collision_layer = 16
+collision_mask = 2147483650
 mass = 0.5
 physics_material_override = SubResource("PhysicsMaterial_bq0gq")
 gravity_scale = 0.0
@@ -93,5 +94,9 @@ speed_scale = 5.0
 libraries = {
 "": SubResource("AnimationLibrary_7bvjm")
 }
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
 
 [connection signal="body_entered" from="." to="." method="_on_hit"]

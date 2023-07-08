@@ -1,4 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://bhk4rp8kt1mn"]
+[gd_scene load_steps=5 format=3 uid="uid://bhk4rp8kt1mn"]
+
+[ext_resource type="AudioStream" uid="uid://3y1gsmy68tcc" path="res://SoundFX/Kenny/impactPlank_medium_002.ogg" id="1_isyu3"]
 
 [sub_resource type="GDScript" id="GDScript_fm3ll"]
 resource_name = "Explosion"
@@ -55,5 +57,9 @@ color_initial_ramp = SubResource("Gradient_0xtu1")
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
 autostart = true
+
+[node name="Impact" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("1_isyu3")
+autoplay = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
