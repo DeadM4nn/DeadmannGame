@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://brwup52gkmid5"]
 
-[ext_resource type="Texture2D" uid="uid://codcjkedjagma" path="res://Asset/Sprite/bullet_default.png" id="1_xqscq"]
+[ext_resource type="Texture2D" uid="uid://cpvn6q40o3byt" path="res://Asset/Swappables/Bug.png" id="1_osydr"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bq0gq"]
 bounce = 1.0
@@ -8,7 +8,7 @@ bounce = 1.0
 [sub_resource type="GDScript" id="GDScript_joihv"]
 script/source = "extends RigidBody2D
 
-const EXPLOSION_INSTANCE : PackedScene = preload(\"res://Element/Explosion/Explosion.tscn\")
+const EXPLOSION_INSTANCE : PackedScene = preload(\"res://Element/Explosion/Swappable_Explosion.tscn\")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -22,6 +22,9 @@ func _process(delta):
 
 # Destroy Self 
 func _on_hit(body):
+	if body is Swappable:
+		body.destroy_self()
+
 	if not body is Bouncer:
 		queue_free()
 		var curr_explosion = EXPLOSION_INSTANCE.instantiate()
@@ -30,8 +33,8 @@ func _on_hit(body):
 "
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ertxx"]
-radius = 5.00159
-height = 14.2323
+radius = 7.79389
+height = 22.3651
 
 [sub_resource type="Animation" id="Animation_3ruqp"]
 resource_name = "BulletSpin"
@@ -81,8 +84,8 @@ contact_monitor = true
 script = SubResource("GDScript_joihv")
 
 [node name="Texture" type="Sprite2D" parent="."]
-scale = Vector2(3, 3)
-texture = ExtResource("1_xqscq")
+scale = Vector2(1.85619, 1.85619)
+texture = ExtResource("1_osydr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(-3.99873, 2.95103)
@@ -90,13 +93,9 @@ shape = SubResource("CapsuleShape2D_ertxx")
 
 [node name="Spin" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Texture")
-speed_scale = 5.0
+speed_scale = 3.0
 libraries = {
 "": SubResource("AnimationLibrary_7bvjm")
 }
-
-[node name="Label" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
 
 [connection signal="body_entered" from="." to="." method="_on_hit"]

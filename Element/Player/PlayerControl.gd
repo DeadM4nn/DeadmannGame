@@ -112,6 +112,10 @@ func set_state(new_state : STATES) -> bool:
 func _unhandled_input(event):
 	if event.is_action_pressed("shoot"):
 		gun.shoot($"Gun Pivot".rotation)
+		
+	if event.is_action_pressed("Canon") and hold_slot != null :
+		gun.shoot_swappable(hold_slot, $"Gun Pivot".rotation)
+		hold_slot = null
 	
 	var zoom_amount : Vector2 =  camera.get_zoom()
 	

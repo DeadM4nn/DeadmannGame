@@ -57,6 +57,7 @@ sources/1 = SubResource("TileSetAtlasSource_cff0f")
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_o8cd6"]
 
 [node name="Word" type="Node2D"]
+scale = Vector2(1, 0.981803)
 
 [node name="Map" type="TileMap" parent="."]
 z_index = -100
@@ -102,6 +103,9 @@ position = Vector2(1168, 139)
 chasing = true
 dangerous = false
 
+[node name="Sprite" parent="Fly2/Sprite" index="1"]
+texture = ExtResource("4_pkjrc")
+
 [node name="Fly3" parent="." instance=ExtResource("6_ukruq")]
 position = Vector2(1338, 251)
 dangerous = false
@@ -123,3 +127,5 @@ lock_rotation = true
 position = Vector2(142, 212)
 mass = 9000.0
 physics_material_override = SubResource("PhysicsMaterial_o8cd6")
+
+[editable path="Fly2"]
