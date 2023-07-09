@@ -263,7 +263,7 @@ texture = ExtResource("6_vy75x")
 [node name="Camera2D" type="Camera2D" parent="Sprite"]
 position = Vector2(15, -63)
 scale = Vector2(1.49504, 1.49504)
-zoom = Vector2(0.595, 0.595)
+zoom = Vector2(0.4, 0.4)
 position_smoothing_enabled = true
 
 [node name="Head" type="Node2D" parent="Sprite"]
