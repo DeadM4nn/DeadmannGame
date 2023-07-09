@@ -8,3 +8,16 @@ res://Swappables/Cobweb.tscn
 res://Swappables/Bug_Danger.tscn
 res://Swappables/Bug.tscn
 res://Element/Player/Gun/Bullet/default.tscn
+res://Element/Player/player_spawner.tscn
+res://Element/Player/PlayerControl.gd
+res://Element/Player/player.tscn
+res://Element/UI/Default_Theme.tres
+res://Element/UI/base.tscn
+res://Element/Player/Gun/default.tscn
+res://Element/UI/ui.tscn
+res://GameMaster.tscn
+res://Element/MetalBar/MetalBar.tscn
+res://Class/MetalBar.tres.gd
+res://Element/Explosion/Swappable_Explosion.tscn
+res://Element/SwappableBullet/Bullet.tscn
+res://Element/Swappable/base_swappable.tscn

@@ -55,6 +55,7 @@ var state : STATES : set = set_state
 ## The Speed of the Player
 const SPEED = 700.0
 
+@export var is_movable : bool = true
 
 func _physics_process(_delta):
 	
@@ -66,7 +67,7 @@ func _physics_process(_delta):
 	)
 	
 		## Moving
-	if direction:
+	if direction and is_movable:
 		velocity = direction * SPEED
 	else:
 #		## Friction
@@ -79,7 +80,12 @@ func _physics_process(_delta):
 		velocity.y = 0
 	
 	# Move
-	var is_moving = move_and_slide()
+	var is_moving
+	
+
+	is_moving = move_and_slide()
+
+
 	
 	## Aim
 	$"Gun Pivot".look_at(get_global_mouse_position())
@@ -139,9 +145,12 @@ func _unhandled_input(event):
 	
 	zoom_amount = zoom_amount.clamp(Vector2(ZOOM_MIN, ZOOM_MIN), Vector2(ZOOM_MAX, ZOOM_MAX))
 	camera.set_zoom(zoom_amount)
+
 	
-	if event.is_action_pressed("test_button"):
-		destroy_self()
+	if event.is_action_pressed("test_button") and is_movable:
+		is_movable = false
+	elif event.is_action_pressed("test_button") and not is_movable:
+		is_movable = true
 
 
 
