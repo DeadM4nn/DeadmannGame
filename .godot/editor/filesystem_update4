@@ -1,8 +1,7 @@
-res://Element/Swappable/base_swappable.tscn
-res://Element/Player/player.tscn
-res://Element/Player/Gun/Bullet/default.tscn
-res://Swappables/Cobweb.tscn
-res://Swappables/Wall_Broken.tscn
-res://Element/MetalBar/MetalBar.tscn
-res://Element/SwappableBullet/Bullet.tscn
 res://Levels/TestLevel/node_2d.tscn
+res://Levels/GameLevel/lvl_base.tscn
+res://Asset/TileSet/Map.tres
+res://Element/Swappable/base_swappable.tscn
+res://Swappables/Wall.tscn
+res://Swappables/Dynamite.tscn
+res://Element/Swappable/base_swappable.gd

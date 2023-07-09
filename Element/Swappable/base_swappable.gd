@@ -126,10 +126,9 @@ func set_behaviour():
 		
 	# If the Swapppable is Pickupable
 	if behaviour_value[BEHAVIOURS.IS_PICKUP]:
-		$Floating.play("Float")
+		$Size/Flapping/Floating/Sprite/Fuse.visible = true
 	else:
-		$Floating.play("RESET")
-		$Floating.stop()
+		$Size/Flapping/Floating/Sprite/Fuse.visible = false
 	
 	if not behaviour_value[BEHAVIOURS.IS_CHASING]:
 		sleeping = true

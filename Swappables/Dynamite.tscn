@@ -1,0 +1,61 @@
+[gd_scene load_steps=3 format=3 uid="uid://cx8r7jdtji7j6"]
+
+[ext_resource type="PackedScene" uid="uid://yfvcmsf6ldym" path="res://Element/Swappable/base_swappable.tscn" id="1_usxc8"]
+[ext_resource type="Texture2D" uid="uid://bf1vcuna523xy" path="res://Asset/Swappables/Bomb.png" id="2_bgq6q"]
+
+[node name="Dynamite" type="Node2D"]
+
+[node name="BaseSwappable" parent="." instance=ExtResource("1_usxc8")]
+flying = false
+chasing = false
+pickup = true
+
+[node name="Sprite" parent="BaseSwappable/Size/Flapping/Floating" index="0"]
+scale = Vector2(1.16107, 1.18295)
+texture = ExtResource("2_bgq6q")
+
+[node name="Skull" parent="BaseSwappable/Size/Flapping/Floating/Sprite" index="0"]
+visible = false
+position = Vector2(-11.7457, 8.33969)
+rotation = -0.475035
+scale = Vector2(0.862208, 0.862208)
+
+[node name="Fuse" parent="BaseSwappable/Size/Flapping/Floating/Sprite" index="1"]
+position = Vector2(19.2429, -26.2455)
+scale = Vector2(0.609117, 0.609117)
+
+[node name="CPUParticles2D" parent="BaseSwappable/Size/Flapping/Floating/Sprite/Fuse" index="0"]
+scale_amount_min = 0.0
+scale_amount_max = 39.79
+
+[node name="Crown" parent="BaseSwappable/Size/Flapping/Floating/Sprite" index="2"]
+visible = false
+position = Vector2(20.4999, -26.0731)
+scale = Vector2(1.09889, 1.08545)
+
+[node name="Shadow" parent="BaseSwappable/Size" index="1"]
+position = Vector2(-0.983521, 87)
+scale = Vector2(-2.02563, -0.550816)
+
+[node name="CollisionShape2D" parent="BaseSwappable" index="1"]
+position = Vector2(0, 0)
+
+[node name="EyeSight" parent="BaseSwappable" index="3"]
+visible = true
+position = Vector2(0, 0)
+
+[node name="Touch" parent="BaseSwappable" index="10"]
+position = Vector2(0, 0)
+
+[node name="Shape" parent="BaseSwappable/Touch" index="0"]
+visible = true
+position = Vector2(0, -21)
+
+[node name="Wall" parent="BaseSwappable" index="11"]
+visible = true
+position = Vector2(0, 0)
+
+[node name="Shape" parent="BaseSwappable/Wall" index="0"]
+position = Vector2(0, 6)
+
+[editable path="BaseSwappable"]

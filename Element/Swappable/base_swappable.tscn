@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://yfvcmsf6ldym"]
+[gd_scene load_steps=31 format=3 uid="uid://yfvcmsf6ldym"]
 
 [ext_resource type="Script" path="res://Element/Swappable/base_swappable.gd" id="1_fexp6"]
 [ext_resource type="Texture2D" uid="uid://igv1m16aeflr" path="res://Asset/Tile/Dungeon Tile/Wall2.png" id="2_kala1"]
@@ -9,7 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://bl5ufipwdswcv" path="res://Asset/Sprite/Chat.png" id="7_fo7sg"]
 [ext_resource type="AudioStream" uid="uid://wd8rug5b1g0x" path="res://SoundFX/Kenny/highUp.ogg" id="8_s4yv8"]
 [ext_resource type="AudioStream" uid="uid://dcxgse1hoo20i" path="res://SoundFX/Kenny/highDown.ogg" id="9_o1l3d"]
-[ext_resource type="PackedScene" uid="uid://bhkef5lt78nba" path="res://Element/Player/player.tscn" id="10_8cjye"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_cu6ri"]
 friction = 5.0
@@ -56,10 +55,10 @@ offsets = PackedFloat32Array(0, 0.211921, 0.490066, 0.741722, 1)
 colors = PackedColorArray(1, 0.833333, 0, 1, 1, 0.868653, 0.211921, 1, 1, 0.915011, 0.490066, 1, 1, 0.956954, 0.741722, 1, 1, 1, 1, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_u352e"]
-radius = 87.5881
+radius = 40.8481
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_30520"]
-radius = 1135.35
+radius = 348.174
 
 [sub_resource type="Animation" id="Animation_rmpsy"]
 resource_name = "Flap_Wings"
@@ -174,10 +173,10 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_el2j4"]
-radius = 196.736
+radius = 71.5122
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cyhsj"]
-radius = 84.1487
+radius = 33.0606
 
 [node name="BaseSwappable" type="RigidBody2D"]
 collision_layer = 2147483648
@@ -187,11 +186,12 @@ gravity_scale = 0.0
 lock_rotation = true
 freeze = true
 script = ExtResource("1_fexp6")
-wall = true
+flying = true
+chasing = true
 jump_force = 125.0
 
 [node name="Size" type="Node2D" parent="."]
-position = Vector2(0, -137)
+position = Vector2(0, -54)
 
 [node name="Flapping" type="Node2D" parent="Size"]
 
@@ -243,7 +243,7 @@ skew = 0.0140327
 modulate = Color(0.246094, 0.34375, 0.109375, 1)
 z_index = -99
 z_as_relative = false
-position = Vector2(-0.983521, 137)
+position = Vector2(-0.983521, 177)
 scale = Vector2(5.87448, 1.59741)
 texture = ExtResource("6_533m4")
 
@@ -318,9 +318,6 @@ collision_layer = 2
 [node name="Shape" type="CollisionShape2D" parent="Wall"]
 position = Vector2(-14, -18)
 shape = SubResource("CircleShape2D_cyhsj")
-
-[node name="Player" parent="." instance=ExtResource("10_8cjye")]
-position = Vector2(383, -51)
 
 [connection signal="timeout" from="JumpInterval" to="." method="jump"]
 [connection signal="body_entered" from="EyeSight" to="." method="_check_body_entered_for_player"]

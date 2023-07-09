@@ -1,0 +1,54 @@
+[gd_scene load_steps=3 format=3 uid="uid://xkqti6cpj6wj"]
+
+[ext_resource type="PackedScene" uid="uid://yfvcmsf6ldym" path="res://Element/Swappable/base_swappable.tscn" id="1_w7i04"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7lf6n"]
+radius = 164.0
+height = 328.0
+
+[node name="Wall" type="Node2D"]
+
+[node name="BaseSwappable" parent="." instance=ExtResource("1_w7i04")]
+flying = false
+chasing = false
+wall = true
+
+[node name="Skull" parent="BaseSwappable/Size/Flapping/Floating/Sprite" index="0"]
+visible = false
+
+[node name="Fuse" parent="BaseSwappable/Size/Flapping/Floating/Sprite" index="1"]
+visible = false
+
+[node name="CPUParticles2D" parent="BaseSwappable/Size/Flapping/Floating/Sprite/Fuse" index="0"]
+visible = false
+
+[node name="Crown" parent="BaseSwappable/Size/Flapping/Floating/Sprite" index="2"]
+visible = false
+
+[node name="Shadow" parent="BaseSwappable/Size" index="1"]
+visible = false
+
+[node name="CollisionShape2D" parent="BaseSwappable" index="1"]
+position = Vector2(-3, 1)
+scale = Vector2(1, 1)
+shape = SubResource("CapsuleShape2D_7lf6n")
+
+[node name="EyeSight" parent="BaseSwappable" index="3"]
+visible = true
+position = Vector2(0, 0)
+
+[node name="Touch" parent="BaseSwappable" index="10"]
+position = Vector2(0, 0)
+
+[node name="Shape" parent="BaseSwappable/Touch" index="0"]
+visible = true
+position = Vector2(0, 0)
+
+[node name="Wall" parent="BaseSwappable" index="11"]
+visible = true
+position = Vector2(0, 0)
+
+[node name="Shape" parent="BaseSwappable/Wall" index="0"]
+position = Vector2(-1, 0)
+
+[editable path="BaseSwappable"]
