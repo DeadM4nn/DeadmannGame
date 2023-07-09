@@ -3,7 +3,11 @@ extends Node
 
 @export var levels : Array[PackedScene] = [] 
 
-@export var location : int = 0
+@export var location : int = 0 : 
+	set(value):
+		value = min(15, value) 
+		value = max(0, value)
+		location = value
 
 @onready var level = get_node("Level")
 
@@ -22,6 +26,12 @@ func load_level(level_value : int):
 
 func _unhandled_input(event):
 	if event.is_action_pressed("Reset"):
+		reset_level()
+		
+	if event.is_action_pressed("next_level"):
+		win_level()
+	elif event.is_action("previous_level"):
+		location -= 1
 		reset_level()
 	
 

@@ -1,14 +1,12 @@
-res://Element/SwappableBullet/Bullet.tscn
+res://GameMaster.tscn
 res://Class/MetalBar.tres.gd
 res://Asset/TileSet/Map.tres
-res://Element/UI/Default_Theme.tres
-res://GameMaster.tscn
 res://Element/Player/Gun/Bullet/default.tscn
 res://Element/Explosion/Swappable_Explosion.tscn
+res://Element/SwappableBullet/Bullet.tscn
 res://Levels/GameLevel/lvl_base.tscn
 res://Element/Swappable/base_swappable.tscn
 res://Element/MetalBar/MetalBar.tscn
 res://Element/Player/player.tscn
 res://GameMaster.gd
-res://Element/Player/PlayerControl.gd
-res://Element/Swappable/base_swappable.gd
+res://Levels/GameLevel/Level1.tscn

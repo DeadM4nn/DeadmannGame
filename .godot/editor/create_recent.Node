@@ -1,11 +1,12 @@
+Button
+ColorRect
+TextureRect
+Panel
+CanvasLayer
 AudioStreamPlayer
 Node
 Node2D
-TextureRect
 Label
-Panel
-CanvasLayer
-ColorRect
 SubViewport
 SubViewportContainer
 AnimationPlayer
