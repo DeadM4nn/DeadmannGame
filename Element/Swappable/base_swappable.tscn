@@ -55,10 +55,10 @@ offsets = PackedFloat32Array(0, 0.211921, 0.490066, 0.741722, 1)
 colors = PackedColorArray(1, 0.833333, 0, 1, 1, 0.868653, 0.211921, 1, 1, 0.915011, 0.490066, 1, 1, 0.956954, 0.741722, 1, 1, 1, 1, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_u352e"]
-radius = 129.136
+radius = 91.6305
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_30520"]
-radius = 988.316
+radius = 2114.26
 
 [sub_resource type="Animation" id="Animation_rmpsy"]
 resource_name = "Flap_Wings"
@@ -67,22 +67,10 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Size/Flapping:position")
+tracks/0/path = NodePath("Size/Flapping:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.8),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(-1, -46), Vector2(-1, -46), Vector2(-1, -46)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Size/Flapping:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.3, 0.8),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
@@ -102,18 +90,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Size/Flapping:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8o8qd"]
@@ -173,10 +149,10 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_el2j4"]
-radius = 173.046
+radius = 126.036
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cyhsj"]
-radius = 136.033
+radius = 118.152
 
 [node name="BaseSwappable" type="RigidBody2D"]
 collision_layer = 2147483648
@@ -194,6 +170,7 @@ jump_force = 125.0
 position = Vector2(0, -54)
 
 [node name="Flapping" type="Node2D" parent="Size"]
+position = Vector2(-1, -4)
 
 [node name="Floating" type="Node2D" parent="Size/Flapping"]
 

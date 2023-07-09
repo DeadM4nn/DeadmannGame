@@ -1,10 +1,11 @@
-[gd_resource type="TileSet" load_steps=7 format=3 uid="uid://cwao62jnlavpm"]
+[gd_resource type="TileSet" load_steps=8 format=3 uid="uid://cwao62jnlavpm"]
 
 [ext_resource type="PackedScene" uid="uid://yfvcmsf6ldym" path="res://Element/Swappable/base_swappable.tscn" id="1_8vx53"]
 [ext_resource type="PackedScene" uid="uid://xkqti6cpj6wj" path="res://Swappables/Wall.tscn" id="2_dgyic"]
 [ext_resource type="PackedScene" uid="uid://cx8r7jdtji7j6" path="res://Swappables/Dynamite.tscn" id="3_i4u3g"]
 [ext_resource type="PackedScene" uid="uid://gsgvuv8gvn6j" path="res://Swappables/Goal.tscn" id="4_m4d0s"]
 [ext_resource type="PackedScene" uid="uid://dbn8awnq6jpem" path="res://Swappables/Cobweb.tscn" id="5_7ius7"]
+[ext_resource type="PackedScene" uid="uid://dk5hjfgivs2ri" path="res://Swappables/Bug.tscn" id="6_yogr6"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_k8aur"]
 resource_name = "Swappables"
@@ -13,6 +14,7 @@ scenes/2/scene = ExtResource("2_dgyic")
 scenes/3/scene = ExtResource("3_i4u3g")
 scenes/4/scene = ExtResource("4_m4d0s")
 scenes/5/scene = ExtResource("5_7ius7")
+scenes/6/scene = ExtResource("6_yogr6")
 
 [resource]
 tile_size = Vector2i(256, 256)

@@ -1,7 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://dbn8awnq6jpem"]
+[gd_scene load_steps=6 format=3 uid="uid://dbn8awnq6jpem"]
 
 [ext_resource type="PackedScene" uid="uid://yfvcmsf6ldym" path="res://Element/Swappable/base_swappable.tscn" id="1_sa6t0"]
 [ext_resource type="Texture2D" uid="uid://cyt5d15ual4fq" path="res://Asset/Sprite/cobweb.png" id="2_q2f5m"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5s064"]
+radius = 119.647
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_45jhv"]
+radius = 190.042
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7mxgq"]
+radius = 166.373
 
 [node name="Cobweb" type="Node2D"]
 
@@ -36,6 +45,7 @@ scale = Vector2(0.908347, 0.897231)
 
 [node name="CollisionShape2D" parent="BaseSwappable" index="1"]
 position = Vector2(0, 0)
+shape = SubResource("CircleShape2D_5s064")
 
 [node name="EyeSight" parent="BaseSwappable" index="3"]
 visible = true
@@ -43,6 +53,9 @@ position = Vector2(0, 0)
 
 [node name="CollisionShape2D" parent="BaseSwappable/EyeSight" index="0"]
 scale = Vector2(0.935158, 0.935158)
+
+[node name="Chat" parent="BaseSwappable" index="5"]
+position = Vector2(112, -75)
 
 [node name="Up" parent="BaseSwappable/Audio" index="0"]
 visible = false
@@ -56,6 +69,7 @@ position = Vector2(0, 0)
 [node name="Shape" parent="BaseSwappable/Touch" index="0"]
 visible = true
 position = Vector2(0, 0)
+shape = SubResource("CircleShape2D_45jhv")
 
 [node name="Wall" parent="BaseSwappable" index="11"]
 visible = true
@@ -63,5 +77,6 @@ position = Vector2(0, 0)
 
 [node name="Shape" parent="BaseSwappable/Wall" index="0"]
 position = Vector2(0, 0)
+shape = SubResource("CircleShape2D_7mxgq")
 
 [editable path="BaseSwappable"]

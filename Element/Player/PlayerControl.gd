@@ -187,31 +187,38 @@ func set_hold(value):
 ## Sets the swapper
 func set_swapper(type : SWAP, target : Swappable):
 	if not target in swapper:
-		swapper[type] = target
+		swapper[type] = weakref(target)
 	
 	if not swapper.has(null):
 		swap_behaviour()
 
 
 func swap_behaviour():
-	var LEFT_BEHAVIOUR = swapper[SWAP.LEFT].behaviour_value.duplicate()
-	var RIGHT_BEHAVIOUR = swapper[SWAP.RIGHT].behaviour_value.duplicate()
+	var swapper_left = swapper[SWAP.LEFT].get_ref()
+	var swapper_right = swapper[SWAP.RIGHT].get_ref()
+	
+	if swapper_left == null or swapper_right == null:
+		return
+	
+	var LEFT_BEHAVIOUR = swapper_left.behaviour_value.duplicate()
+	var RIGHT_BEHAVIOUR = swapper_right.behaviour_value.duplicate()
 	
 	
-	print("The LEFT SIDE BEHAVIOUR : %s" % swapper[SWAP.LEFT].behaviour_value)
-	print("The RIGHT SIDE BEHAVIOUR : %s" % swapper[SWAP.RIGHT].behaviour_value)
+	print("The LEFT SIDE BEHAVIOUR : %s" % swapper_left.behaviour_value)
+	print("The RIGHT SIDE BEHAVIOUR : %s" % swapper_right.behaviour_value)
 	
-	swapper[SWAP.LEFT].reset_behaviour()
-	swapper[SWAP.RIGHT].reset_behaviour()
+	swapper_left.reset_behaviour()
+	swapper_right.reset_behaviour()
 	
 	
-	swapper[SWAP.LEFT].behaviour_value = RIGHT_BEHAVIOUR
-	swapper[SWAP.LEFT].set_behaviour()
+	swapper_left.behaviour_value = RIGHT_BEHAVIOUR
+	swapper_left.set_behaviour()
 	
-	swapper[SWAP.RIGHT].behaviour_value = LEFT_BEHAVIOUR
-	swapper[SWAP.RIGHT].set_behaviour()
+	swapper_right.behaviour_value = LEFT_BEHAVIOUR
+	swapper_right.set_behaviour()
 #
-	print("The LEFT SIDE BEHAVIOUR : %s" % swapper[SWAP.LEFT].behaviour_value)
-	print("The RIGHT SIDE BEHAVIOUR : %s" % swapper[SWAP.RIGHT].behaviour_value)
+	print("The LEFT SIDE BEHAVIOUR : %s" % swapper_left.behaviour_value)
+	print("The RIGHT SIDE BEHAVIOUR : %s" % swapper_right.behaviour_value)
 	
 	swapper = [null, null]
+

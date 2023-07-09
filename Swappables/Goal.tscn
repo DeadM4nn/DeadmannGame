@@ -1,7 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://gsgvuv8gvn6j"]
+[gd_scene load_steps=7 format=3 uid="uid://gsgvuv8gvn6j"]
 
 [ext_resource type="PackedScene" uid="uid://yfvcmsf6ldym" path="res://Element/Swappable/base_swappable.tscn" id="1_bjiiv"]
 [ext_resource type="Texture2D" uid="uid://n72sunuti4ao" path="res://Asset/Swappables/Door.png" id="2_c41d7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6pevx"]
+radius = 91.6305
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1ulad"]
+radius = 1324.07
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pt1uw"]
+radius = 126.036
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_58vtq"]
+radius = 95.021
 
 [node name="Goal" type="Node2D"]
 
@@ -29,10 +41,17 @@ rotation = 0.0056625
 
 [node name="CollisionShape2D" parent="BaseSwappable" index="1"]
 position = Vector2(0, 0)
+shape = SubResource("CircleShape2D_6pevx")
 
 [node name="EyeSight" parent="BaseSwappable" index="3"]
 visible = true
 position = Vector2(0, 0)
+
+[node name="CollisionShape2D" parent="BaseSwappable/EyeSight" index="0"]
+shape = SubResource("CircleShape2D_1ulad")
+
+[node name="Chat" parent="BaseSwappable" index="5"]
+position = Vector2(111, -40)
 
 [node name="Touch" parent="BaseSwappable" index="10"]
 position = Vector2(0, 0)
@@ -40,6 +59,7 @@ position = Vector2(0, 0)
 [node name="Shape" parent="BaseSwappable/Touch" index="0"]
 visible = true
 position = Vector2(0, 0)
+shape = SubResource("CircleShape2D_pt1uw")
 
 [node name="Wall" parent="BaseSwappable" index="11"]
 visible = true
@@ -47,5 +67,6 @@ position = Vector2(0, 0)
 
 [node name="Shape" parent="BaseSwappable/Wall" index="0"]
 position = Vector2(0, 0)
+shape = SubResource("CircleShape2D_58vtq")
 
 [editable path="BaseSwappable"]
