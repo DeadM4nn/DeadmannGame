@@ -4,3 +4,4 @@ res://Levels/GameLevel/lvl_base.tscn
 res://Element/Swappable/base_swappable.tscn
 res://Swappables/Wall.tscn
 res://Swappables/Dynamite.tscn
+res://Swappables/Cobweb.tscn

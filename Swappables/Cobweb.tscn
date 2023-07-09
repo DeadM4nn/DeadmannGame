@@ -1,0 +1,67 @@
+[gd_scene load_steps=3 format=3 uid="uid://dbn8awnq6jpem"]
+
+[ext_resource type="PackedScene" uid="uid://yfvcmsf6ldym" path="res://Element/Swappable/base_swappable.tscn" id="1_sa6t0"]
+[ext_resource type="Texture2D" uid="uid://cyt5d15ual4fq" path="res://Asset/Sprite/cobweb.png" id="2_q2f5m"]
+
+[node name="Cobweb" type="Node2D"]
+
+[node name="BaseSwappable" parent="." instance=ExtResource("1_sa6t0")]
+flying = false
+chasing = false
+voletile = true
+
+[node name="Sprite" parent="BaseSwappable/Size/Flapping/Floating" index="0"]
+texture = ExtResource("2_q2f5m")
+
+[node name="Skull" parent="BaseSwappable/Size/Flapping/Floating/Sprite" index="0"]
+visible = false
+position = Vector2(6.7475, 6.62269)
+scale = Vector2(0.331834, 0.331834)
+
+[node name="Fuse" parent="BaseSwappable/Size/Flapping/Floating/Sprite" index="1"]
+visible = false
+position = Vector2(-5.74787, -26.9813)
+scale = Vector2(0.336471, 0.336471)
+
+[node name="CPUParticles2D" parent="BaseSwappable/Size/Flapping/Floating/Sprite/Fuse" index="0"]
+visible = false
+scale_amount_min = 39.79
+scale_amount_max = 39.79
+
+[node name="Crown" parent="BaseSwappable/Size/Flapping/Floating/Sprite" index="2"]
+visible = false
+position = Vector2(-8.36851, -3.08872)
+rotation = -0.500368
+scale = Vector2(0.908347, 0.897231)
+
+[node name="CollisionShape2D" parent="BaseSwappable" index="1"]
+position = Vector2(0, 0)
+
+[node name="EyeSight" parent="BaseSwappable" index="3"]
+visible = true
+position = Vector2(0, 0)
+
+[node name="CollisionShape2D" parent="BaseSwappable/EyeSight" index="0"]
+scale = Vector2(0.935158, 0.935158)
+
+[node name="Up" parent="BaseSwappable/Audio" index="0"]
+visible = false
+
+[node name="Down" parent="BaseSwappable/Audio" index="1"]
+visible = false
+
+[node name="Touch" parent="BaseSwappable" index="10"]
+position = Vector2(0, 0)
+
+[node name="Shape" parent="BaseSwappable/Touch" index="0"]
+visible = true
+position = Vector2(0, 0)
+
+[node name="Wall" parent="BaseSwappable" index="11"]
+visible = true
+position = Vector2(0, 0)
+
+[node name="Shape" parent="BaseSwappable/Wall" index="0"]
+position = Vector2(0, 0)
+
+[editable path="BaseSwappable"]
