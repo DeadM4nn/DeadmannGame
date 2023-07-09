@@ -22,8 +22,12 @@ func _process(delta):
 
 # Destroy Self 
 func _on_hit(body):
+	
 	if body is Swappable or body is MetalBar:
 		body.destroy_self()
+
+	if body is StaticBody2D and body.get_collision_mask_value(17):
+		body.queue_free()
 
 	if not body is Bouncer:
 		queue_free()
@@ -74,7 +78,7 @@ _data = {
 }
 
 [node name="default" type="RigidBody2D"]
-collision_layer = 32768
+collision_layer = 98304
 collision_mask = 2684354562
 mass = 0.5
 physics_material_override = SubResource("PhysicsMaterial_bq0gq")

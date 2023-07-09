@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bhkef5lt78nba"]
+[gd_scene load_steps=30 format=3 uid="uid://bhkef5lt78nba"]
 
 [ext_resource type="Script" path="res://Element/Player/PlayerControl.gd" id="1_hsark"]
 [ext_resource type="PackedScene" uid="uid://dn5mpoaqcb0xq" path="res://Element/Player/Gun/default.tscn" id="2_lkwsr"]
@@ -11,6 +11,10 @@
 [ext_resource type="Texture2D" uid="uid://bo8x2vv0ov2ci" path="res://Asset/Sprite/Shadow.png" id="5_roufa"]
 [ext_resource type="Texture2D" uid="uid://bn3vlr6lwsubw" path="res://Asset/Bot/WireWraped.png" id="6_vy75x"]
 [ext_resource type="AudioStream" uid="uid://7maasely6w30" path="res://SoundFX/Kenny/pepSound5.ogg" id="11_m0v06"]
+[ext_resource type="Texture2D" uid="uid://blaebkxrwvm5a" path="res://Asset/Sprite/UI.png" id="12_yhaks"]
+[ext_resource type="FontFile" uid="uid://874ts3j7ciws" path="res://Asset/Font/origami-mommy.regular.ttf" id="13_oj15m"]
+[ext_resource type="Texture2D" uid="uid://bf1vcuna523xy" path="res://Asset/Swappables/Bomb.png" id="14_v0gno"]
+[ext_resource type="Texture2D" uid="uid://c7owj4fgryt34" path="res://Asset/Sprite/Throw.png" id="15_gfep0"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1iahm"]
 radius = 50.0
@@ -213,6 +217,16 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_g2e47"]
 radius = 63.3877
 
+[sub_resource type="LabelSettings" id="LabelSettings_4a4i0"]
+font = ExtResource("13_oj15m")
+font_size = 9
+font_color = Color(0.0976563, 0.0976563, 0.0976563, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_k15ik"]
+font = ExtResource("13_oj15m")
+font_size = 11
+font_color = Color(0.0976563, 0.0976563, 0.0976563, 1)
+
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 6291458
 platform_on_leave = 2
@@ -343,6 +357,126 @@ shape = SubResource("CircleShape2D_g2e47")
 [node name="Pickup" type="AudioStreamPlayer2D" parent="Audio"]
 stream = ExtResource("11_m0v06")
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Switch" type="TextureRect" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0.596078)
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_top = -211.0
+offset_right = -665.0
+offset_bottom = -35.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("12_yhaks")
+
+[node name="Label" type="Label" parent="CanvasLayer/Switch"]
+modulate = Color(1, 1, 1, 0.596078)
+layout_mode = 0
+offset_left = 13.0
+offset_top = 149.0
+offset_right = 145.0
+offset_bottom = 173.0
+text = "Left Mouse"
+label_settings = SubResource("LabelSettings_4a4i0")
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+
+[node name="Label2" type="Label" parent="CanvasLayer/Switch"]
+modulate = Color(1, 1, 1, 0.596078)
+layout_mode = 0
+offset_left = 232.0
+offset_top = 149.0
+offset_right = 364.0
+offset_bottom = 173.0
+text = "Right Mouse"
+label_settings = SubResource("LabelSettings_4a4i0")
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+
+[node name="Left" type="TextureRect" parent="CanvasLayer/Switch"]
+visible = false
+modulate = Color(1, 1, 1, 0.596078)
+layout_mode = 0
+offset_left = 30.0
+offset_top = 26.0
+offset_right = 181.0
+offset_bottom = 168.0
+scale = Vector2(0.647358, 0.647358)
+texture = ExtResource("14_v0gno")
+
+[node name="Right" type="TextureRect" parent="CanvasLayer/Switch"]
+visible = false
+modulate = Color(1, 1, 1, 0.596078)
+layout_mode = 0
+offset_left = 243.0
+offset_top = 22.0
+offset_right = 394.0
+offset_bottom = 164.0
+scale = Vector2(0.699907, 0.699907)
+texture = ExtResource("14_v0gno")
+
+[node name="Throw" type="TextureRect" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0.596078)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 880.0
+offset_top = 565.0
+offset_right = 880.0
+offset_bottom = 723.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.15156, 0.191837)
+texture = ExtResource("15_gfep0")
+
+[node name="ThrowIcon" type="TextureRect" parent="CanvasLayer/Throw"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 171.55
+offset_top = 83.4041
+offset_right = 171.55
+offset_bottom = 241.404
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.615281, 0.529389)
+texture = ExtResource("14_v0gno")
+
+[node name="Label3" type="Label" parent="CanvasLayer/Throw"]
+layout_mode = 0
+offset_left = 184.747
+offset_top = 797.552
+offset_right = 316.747
+offset_bottom = 821.552
+scale = Vector2(5.48668, 5.48668)
+text = "Space"
+label_settings = SubResource("LabelSettings_k15ik")
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+
+[node name="Label4" type="Label" parent="CanvasLayer/Throw"]
+layout_mode = 0
+offset_left = -2494.07
+offset_top = 724.573
+offset_right = -2320.07
+offset_bottom = 748.573
+scale = Vector2(11.4412, 11.4412)
+text = "R to reset Puzzle"
+label_settings = SubResource("LabelSettings_k15ik")
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+
+[connection signal="win_game" from="." to="." method="_test_win"]
 [connection signal="timeout" from="ShootInterval" to="." method="_on_shoot_interval_timeout"]
 [connection signal="area_entered" from="Touch" to="." method="_check_death"]
 

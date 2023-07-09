@@ -188,15 +188,26 @@ func _check_death(body):
 func set_hold(value):
 	if value != null and is_inside_tree():
 		$Sprite/UpperBody/Item.texture = value
+		$CanvasLayer/Throw/ThrowIcon.texture = value
 		$Sprite/UpperBody/Item.visible = true
+		$CanvasLayer/Throw/ThrowIcon.visible = true
 	elif value == null and is_inside_tree():
 		$Sprite/UpperBody/Item.visible = false
+		$CanvasLayer/Throw/ThrowIcon.visible = false
 	hold_slot = value
+
 
 ## Sets the swapper
 func set_swapper(type : SWAP, target : Swappable):
 	if not target in swapper:
 		swapper[type] = weakref(target)
+		
+		if type == SWAP.LEFT :
+			$CanvasLayer/Switch/Left.visible = true
+			$CanvasLayer/Switch/Left.texture = swapper[type].get_ref().get_swapper_texture()
+		if type == SWAP.RIGHT : 
+			$CanvasLayer/Switch/Right.visible = true
+			$CanvasLayer/Switch/Right.texture = swapper[type].get_ref().get_swapper_texture()
 	
 	if not swapper.has(null):
 		swap_behaviour()
@@ -230,4 +241,10 @@ func swap_behaviour():
 	print("The RIGHT SIDE BEHAVIOUR : %s" % swapper_right.behaviour_value)
 	
 	swapper = [null, null]
+	$CanvasLayer/Switch/Right.visible = false
+	$CanvasLayer/Switch/Left.visible = false
 
+
+
+func _test_win():
+	print("Win")

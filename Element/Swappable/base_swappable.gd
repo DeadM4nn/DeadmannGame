@@ -201,3 +201,7 @@ func reset_behaviour():
 	}
 	
 	set_behaviour()
+
+
+func get_swapper_texture() -> Texture2D:
+	return $Size/Flapping/Floating/Sprite.texture.duplicate()

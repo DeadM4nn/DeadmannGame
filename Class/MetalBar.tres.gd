@@ -10,3 +10,5 @@ func _ready():
 func _process(delta):
 	pass
 
+func destroy_self_metal_bar():
+	pass
