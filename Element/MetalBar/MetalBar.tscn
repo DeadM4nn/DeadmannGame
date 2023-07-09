@@ -7,7 +7,7 @@
 size = Vector2(238, 258)
 
 [node name="MetalBar" type="StaticBody2D"]
-collision_layer = 4194304
+collision_layer = 536870912
 collision_mask = 0
 script = ExtResource("1_sku8p")
 
@@ -18,5 +18,4 @@ scale = Vector2(4, 4)
 texture = ExtResource("1_lphea")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource("RectangleShape2D_407ia")

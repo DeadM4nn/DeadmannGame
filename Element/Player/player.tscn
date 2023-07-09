@@ -292,9 +292,10 @@ z_as_relative = false
 position = Vector2(-33, -1)
 
 [node name="GunAndHand" type="Node2D" parent="Gun Pivot"]
+z_index = 6
+z_as_relative = false
 
 [node name="Gun" parent="Gun Pivot/GunAndHand" instance=ExtResource("2_lkwsr")]
-z_index = 90
 position = Vector2(15, -5)
 scale = Vector2(0.291684, 0.291684)
 player = NodePath("../../..")
@@ -303,7 +304,6 @@ player = NodePath("../../..")
 position = Vector2(394.262, -44)
 
 [node name="Hand" type="Sprite2D" parent="Gun Pivot/GunAndHand"]
-z_index = 91
 position = Vector2(14, 3)
 rotation = -0.00268751
 scale = Vector2(1.10314, 1.1544)

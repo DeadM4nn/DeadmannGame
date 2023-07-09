@@ -1,13 +1,21 @@
 [gd_scene load_steps=3 format=3 uid="uid://cwqlq07b30la8"]
 
-[ext_resource type="PackedScene" uid="uid://c2qy74u4hqxla" path="res://Element/Wall/Bouncer.tscn" id="2_qt5cp"]
-[ext_resource type="PackedScene" uid="uid://hogivbn4mial" path="res://Levels/TestLevel/node_2d.tscn" id="2_ttdpv"]
+[ext_resource type="PackedScene" uid="uid://hogivbn4mial" path="res://Levels/GameLevel/lvl_base.tscn" id="1_i5oq8"]
+[ext_resource type="PackedScene" uid="uid://b7jg8u57fjuxd" path="res://Element/UI/ui.tscn" id="2_h00cr"]
 
-[node name="GameMaster" type="Node"]
+[node name="Node" type="Node"]
 
-[node name="Node2D" parent="." instance=ExtResource("2_ttdpv")]
+[node name="Game" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
 
-[node name="Industructibe3" parent="Node2D" instance=ExtResource("2_qt5cp")]
-position = Vector2(1297, 143)
-rotation = -0.837234
-scale = Vector2(3.28, 1)
+[node name="Node2D" parent="Game" instance=ExtResource("1_i5oq8")]
+
+[node name="TileMap" parent="Game/Node2D" index="0"]
+z_as_relative = true
+
+[node name="UI" parent="Game/Node2D" instance=ExtResource("2_h00cr")]
+mouse_filter = 1
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[editable path="Game/Node2D"]

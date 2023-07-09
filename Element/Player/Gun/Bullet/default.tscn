@@ -91,6 +91,8 @@ font_color = Color(0.121094, 0.171875, 0.0429688, 1)
 outline_size = 6
 
 [node name="default" type="RigidBody2D"]
+z_index = 100
+z_as_relative = false
 collision_layer = 16
 collision_mask = 2147483650
 mass = 0.5
