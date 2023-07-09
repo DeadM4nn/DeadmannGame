@@ -289,6 +289,7 @@ position = Vector2(-33, -1)
 z_index = 90
 position = Vector2(15, -5)
 scale = Vector2(0.291684, 0.291684)
+player = NodePath("../../..")
 
 [node name="Nozzle" parent="Gun Pivot/GunAndHand/Gun" index="1"]
 position = Vector2(394.262, -44)
@@ -334,7 +335,6 @@ shape = SubResource("CircleShape2D_g2e47")
 [node name="Pickup" type="AudioStreamPlayer2D" parent="Audio"]
 stream = ExtResource("11_m0v06")
 
-[connection signal="win_game" from="." to="." method="_on_win_game"]
 [connection signal="timeout" from="ShootInterval" to="." method="_on_shoot_interval_timeout"]
 [connection signal="area_entered" from="Touch" to="." method="_check_death"]
 

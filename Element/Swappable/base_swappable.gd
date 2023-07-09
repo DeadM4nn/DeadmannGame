@@ -108,10 +108,10 @@ func set_behaviour():
 	
 	# If the Swappable is wall
 	if behaviour_value[BEHAVIOURS.IS_WALL]:
-		freeze = true
+		call_deferred("set_freeze_enabled", true)
 		$Wall/Shape.call_deferred("set_disabled", false)
 	else:
-		freeze = false
+		call_deferred("set_freeze_enabled", false)
 		$Wall/Shape.call_deferred("set_disabled", true)
 	
 	# If the Swapppable is 
@@ -119,6 +119,21 @@ func set_behaviour():
 		$Crown.visible = true
 	else:
 		$Crown.visible = false
+		
+	# If the Swapppable is Pickupable
+	if behaviour_value[BEHAVIOURS.IS_PICKUP]:
+		$Floating.play("Float")
+	else:
+		$Floating.play("RESET")
+		$Floating.stop()
+	
+	if not behaviour_value[BEHAVIOURS.IS_CHASING]:
+		sleeping = true
+		$ChatAnimation.play("Open")
+		$ChatAnimation.stop()
+	else:
+		$EyeSight.monitoring = false
+		$EyeSight.monitoring = true
 
 
 func jump():
@@ -142,7 +157,7 @@ func _forget_player(body):
 		player = null
 		sleeping = true
 		
-		if behaviour_value[BEHAVIOURS.IS_CHASING]:
+		if behaviour_value[BEHAVIOURS.IS_CHASING] and $Audio/Down.is_inside_tree():
 			$Audio/Down.play()
 			$ChatAnimation.play_backwards("Open")
 
@@ -169,3 +184,17 @@ func destroy_self():
 func pickup_swappable() -> Texture2D:
 	queue_free()
 	return get_node("Sprite/Sprite").texture
+
+
+func reset_behaviour():
+	behaviour_value = {
+		BEHAVIOURS.IS_FLYING : false,
+		BEHAVIOURS.IS_CHASING : false, # Makes Incremental Movement Towars The Player
+		BEHAVIOURS.IS_DANGEROUS : false, 
+		BEHAVIOURS.IS_VOLETILE : false,
+		BEHAVIOURS.IS_WALL : false,
+		BEHAVIOURS.IS_PICKUP : false,
+		BEHAVIOURS.IS_TROPHY : false,
+	}
+	
+	set_behaviour()

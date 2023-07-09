@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://c170vi5j4hrib"]
+[gd_scene load_steps=10 format=3 uid="uid://c170vi5j4hrib"]
 
 [ext_resource type="Texture2D" uid="uid://codcjkedjagma" path="res://Asset/Sprite/bullet_default.png" id="1_wse5y"]
+[ext_resource type="FontFile" uid="uid://874ts3j7ciws" path="res://Asset/Font/origami-mommy.regular.ttf" id="2_6bxai"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bq0gq"]
 bounce = 1.0
@@ -10,9 +11,19 @@ script/source = "extends RigidBody2D
 
 const EXPLOSION_INSTANCE : PackedScene = preload(\"res://Element/Explosion/Explosion.tscn\")
 
+var swap_type : Player.SWAP
+
+var player : Player 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Spin.play(\"BulletSpin\")
+	
+	if swap_type == Player.SWAP.RIGHT:
+		$Label.text = \"R\"
+	elif swap_type == Player.SWAP.LEFT:
+		$Label.text = \"L\"
+
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -27,6 +38,9 @@ func _on_hit(body):
 		var curr_explosion = EXPLOSION_INSTANCE.instantiate()
 		get_tree().root.add_child(curr_explosion)
 		curr_explosion.global_position = global_position
+	
+	if player.is_inside_tree() and body is Swappable:
+		player.set_swapper(swap_type, body)
 "
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ertxx"]
@@ -70,6 +84,12 @@ _data = {
 "RESET": SubResource("Animation_vla64")
 }
 
+[sub_resource type="LabelSettings" id="LabelSettings_14b4h"]
+font = ExtResource("2_6bxai")
+font_size = 32
+font_color = Color(0.121094, 0.171875, 0.0429688, 1)
+outline_size = 6
+
 [node name="default" type="RigidBody2D"]
 collision_layer = 16
 collision_mask = 2147483650
@@ -79,10 +99,6 @@ gravity_scale = 0.0
 max_contacts_reported = 1
 contact_monitor = true
 script = SubResource("GDScript_joihv")
-
-[node name="Texture" type="Sprite2D" parent="."]
-scale = Vector2(3, 3)
-texture = ExtResource("1_wse5y")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(-3.99873, 2.95103)
@@ -95,8 +111,19 @@ libraries = {
 "": SubResource("AnimationLibrary_7bvjm")
 }
 
+[node name="Texture" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = ExtResource("1_wse5y")
+
 [node name="Label" type="Label" parent="."]
-offset_right = 40.0
+z_index = 1
+offset_left = -23.0
+offset_top = -22.0
+offset_right = 22.0
 offset_bottom = 23.0
+text = "R"
+label_settings = SubResource("LabelSettings_14b4h")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="body_entered" from="." to="." method="_on_hit"]

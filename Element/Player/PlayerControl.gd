@@ -20,6 +20,12 @@ const FLOW_STATES : Dictionary = {
 }
 
 
+## Dictates which slot to be filled
+enum SWAP{
+	LEFT,
+	RIGHT,
+}
+
 ## Keeps track if the body is flipped
 var is_flipped : bool = false
 
@@ -28,6 +34,9 @@ const ANIMATION_STATES : Dictionary = {
 	STATES.IDLE : "IDLE", 
 	STATES.WALKING : "WALKING",
 }
+
+## Points to the two 2 Nodes
+var swapper : Array = [null, null]
 
 
 ## Holds the texture of a Holdable
@@ -110,8 +119,10 @@ func set_state(new_state : STATES) -> bool:
 
 
 func _unhandled_input(event):
-	if event.is_action_pressed("shoot"):
-		gun.shoot($"Gun Pivot".rotation)
+	if event.is_action_pressed("shoot_l"):
+		gun.shoot($"Gun Pivot".rotation, SWAP.LEFT)
+	elif event.is_action_pressed("shoot_r"):
+		gun.shoot($"Gun Pivot".rotation, SWAP.RIGHT)
 		
 	if event.is_action_pressed("Canon") and hold_slot != null :
 		gun.shoot_swappable(hold_slot, $"Gun Pivot".rotation)
@@ -172,3 +183,35 @@ func set_hold(value):
 	elif value == null and is_inside_tree():
 		$Sprite/UpperBody/Item.visible = false
 	hold_slot = value
+
+## Sets the swapper
+func set_swapper(type : SWAP, target : Swappable):
+	if not target in swapper:
+		swapper[type] = target
+	
+	if not swapper.has(null):
+		swap_behaviour()
+
+
+func swap_behaviour():
+	var LEFT_BEHAVIOUR = swapper[SWAP.LEFT].behaviour_value.duplicate()
+	var RIGHT_BEHAVIOUR = swapper[SWAP.RIGHT].behaviour_value.duplicate()
+	
+	
+	print("The LEFT SIDE BEHAVIOUR : %s" % swapper[SWAP.LEFT].behaviour_value)
+	print("The RIGHT SIDE BEHAVIOUR : %s" % swapper[SWAP.RIGHT].behaviour_value)
+	
+	swapper[SWAP.LEFT].reset_behaviour()
+	swapper[SWAP.RIGHT].reset_behaviour()
+	
+	
+	swapper[SWAP.LEFT].behaviour_value = RIGHT_BEHAVIOUR
+	swapper[SWAP.LEFT].set_behaviour()
+	
+	swapper[SWAP.RIGHT].behaviour_value = LEFT_BEHAVIOUR
+	swapper[SWAP.RIGHT].set_behaviour()
+#
+	print("The LEFT SIDE BEHAVIOUR : %s" % swapper[SWAP.LEFT].behaviour_value)
+	print("The RIGHT SIDE BEHAVIOUR : %s" % swapper[SWAP.RIGHT].behaviour_value)
+	
+	swapper = [null, null]

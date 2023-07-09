@@ -5,6 +5,8 @@ const BULLET_FILE : PackedScene = preload("res://Element/Player/Gun/Bullet/defau
 ## Specifies which scene is used as a bullet
 const SWAP_BULLET_FILE : PackedScene = preload("res://Element/SwappableBullet/Bullet.tscn")
 
+@export var player : NodePath
+
 ## Keeps track if the texture is flipped
 var is_flipped : bool = false
 
@@ -18,13 +20,21 @@ func _ready():
 
 # Duck Typed : Shoot. Spawns a bullet. Bullet is instantiated from
 # BULLET_FILE
-func shoot( pivot_rotation : float = 0.00, curr_bull_speed : float = bullet_speed) -> void:
+func shoot( pivot_rotation : float = 0.00, type : Player.SWAP = Player.SWAP.RIGHT ) -> void:
 	var curr_bullet = BULLET_FILE.instantiate()
+	
+	var curr_bull_speed = bullet_speed
+	
+	
+	# My eyes hort looking at this. Im sorry for the crimes Ive committed
+	curr_bullet.swap_type = type
+	curr_bullet.player = get_node(player)
 	
 	$Audio/Shoot.play()
 	
 	curr_bullet.position = $Nozzle.global_position
 	curr_bullet.global_rotation = global_rotation
+	
 	
 	get_tree().get_root().call_deferred("add_child", curr_bullet)
 	

@@ -159,10 +159,10 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_el2j4"]
-radius = 63.3877
+radius = 76.0263
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2vmo7"]
-size = Vector2(122, 134)
+[sub_resource type="CircleShape2D" id="CircleShape2D_cyhsj"]
+radius = 46.0435
 
 [node name="BaseSwappable" type="RigidBody2D"]
 collision_layer = 2147483648
@@ -200,7 +200,6 @@ texture = ExtResource("4_dw7a1")
 offset = Vector2(-28.695, 17.47)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 scale = Vector2(1.17023, 1.17023)
 shape = SubResource("CircleShape2D_u352e")
 
@@ -254,15 +253,13 @@ collision_layer = 128
 collision_mask = 64
 
 [node name="Shape" type="CollisionShape2D" parent="Touch"]
-visible = false
 shape = SubResource("CircleShape2D_el2j4")
 
 [node name="Wall" type="StaticBody2D" parent="."]
 collision_layer = 2
 
 [node name="Shape" type="CollisionShape2D" parent="Wall"]
-visible = false
-shape = SubResource("RectangleShape2D_2vmo7")
+shape = SubResource("CircleShape2D_cyhsj")
 
 [node name="Crown" parent="." instance=ExtResource("8_uain4")]
 position = Vector2(0, -62)
