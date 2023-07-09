@@ -11,4 +11,4 @@ position = Vector2(2992, -754)
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("2_73705")
 format = 2
-layer_0/tile_data = PackedInt32Array(-393208, 0, 131072, -393207, 0, 131072, -393206, 0, 131072, -393205, 0, 131072, -393204, 0, 131072, -393203, 0, 131072, -393202, 0, 131072, -262135, 0, 196608)
+layer_0/tile_data = PackedInt32Array(-393202, 0, 131072, -262135, 0, 196608, -262129, 0, 262144)

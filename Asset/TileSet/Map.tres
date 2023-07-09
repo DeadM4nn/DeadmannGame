@@ -1,15 +1,16 @@
-[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://cwao62jnlavpm"]
+[gd_resource type="TileSet" load_steps=6 format=3 uid="uid://cwao62jnlavpm"]
 
 [ext_resource type="PackedScene" uid="uid://yfvcmsf6ldym" path="res://Element/Swappable/base_swappable.tscn" id="1_8vx53"]
 [ext_resource type="PackedScene" uid="uid://xkqti6cpj6wj" path="res://Swappables/Wall.tscn" id="2_dgyic"]
 [ext_resource type="PackedScene" uid="uid://cx8r7jdtji7j6" path="res://Swappables/Dynamite.tscn" id="3_i4u3g"]
+[ext_resource type="PackedScene" uid="uid://gsgvuv8gvn6j" path="res://Swappables/Goal.tscn" id="4_m4d0s"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_k8aur"]
 resource_name = "Swappables"
 scenes/1/scene = ExtResource("1_8vx53")
-scenes/1/display_placeholder = ExtResource("1_8vx53")
 scenes/2/scene = ExtResource("2_dgyic")
 scenes/3/scene = ExtResource("3_i4u3g")
+scenes/4/scene = ExtResource("4_m4d0s")
 
 [resource]
 tile_size = Vector2i(256, 256)

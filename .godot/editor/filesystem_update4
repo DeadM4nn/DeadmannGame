@@ -1,7 +1,6 @@
-res://Levels/TestLevel/node_2d.tscn
-res://Levels/GameLevel/lvl_base.tscn
 res://Asset/TileSet/Map.tres
+res://Swappables/Goal.tscn
+res://Levels/GameLevel/lvl_base.tscn
 res://Element/Swappable/base_swappable.tscn
 res://Swappables/Wall.tscn
 res://Swappables/Dynamite.tscn
-res://Element/Swappable/base_swappable.gd

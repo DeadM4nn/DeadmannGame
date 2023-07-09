@@ -1,0 +1,51 @@
+[gd_scene load_steps=3 format=3 uid="uid://gsgvuv8gvn6j"]
+
+[ext_resource type="PackedScene" uid="uid://yfvcmsf6ldym" path="res://Element/Swappable/base_swappable.tscn" id="1_bjiiv"]
+[ext_resource type="Texture2D" uid="uid://n72sunuti4ao" path="res://Asset/Swappables/Door.png" id="2_c41d7"]
+
+[node name="Goal" type="Node2D"]
+
+[node name="BaseSwappable" parent="." instance=ExtResource("1_bjiiv")]
+flying = false
+chasing = false
+trophy = true
+
+[node name="Sprite" parent="BaseSwappable/Size/Flapping/Floating" index="0"]
+texture = ExtResource("2_c41d7")
+
+[node name="Skull" parent="BaseSwappable/Size/Flapping/Floating/Sprite" index="0"]
+visible = false
+rotation = -0.199301
+scale = Vector2(0.365777, 0.365777)
+
+[node name="Fuse" parent="BaseSwappable/Size/Flapping/Floating/Sprite" index="1"]
+visible = false
+position = Vector2(-1.49944, -27.4719)
+scale = Vector2(0.802068, 0.802068)
+
+[node name="Crown" parent="BaseSwappable/Size/Flapping/Floating/Sprite" index="2"]
+position = Vector2(-0.248502, -25.0178)
+rotation = 0.0056625
+
+[node name="CollisionShape2D" parent="BaseSwappable" index="1"]
+position = Vector2(0, 0)
+
+[node name="EyeSight" parent="BaseSwappable" index="3"]
+visible = true
+position = Vector2(0, 0)
+
+[node name="Touch" parent="BaseSwappable" index="10"]
+position = Vector2(0, 0)
+
+[node name="Shape" parent="BaseSwappable/Touch" index="0"]
+visible = true
+position = Vector2(0, 0)
+
+[node name="Wall" parent="BaseSwappable" index="11"]
+visible = true
+position = Vector2(0, 0)
+
+[node name="Shape" parent="BaseSwappable/Wall" index="0"]
+position = Vector2(0, 0)
+
+[editable path="BaseSwappable"]
