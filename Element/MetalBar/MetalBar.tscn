@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://73vyr3hsu40v"]
+
+[ext_resource type="Texture2D" uid="uid://c0c5nuncg3hnj" path="res://Asset/Tile/Dungeon Tile/Bar1.png" id="1_lphea"]
+[ext_resource type="Script" path="res://Class/MetalBar.tres.gd" id="1_sku8p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_407ia"]
+size = Vector2(60, 64)
+
+[node name="Node2D" type="StaticBody2D"]
+collision_layer = 4194304
+collision_mask = 0
+script = ExtResource("1_sku8p")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_lphea")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_407ia")

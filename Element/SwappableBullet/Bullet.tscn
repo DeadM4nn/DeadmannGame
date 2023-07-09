@@ -22,7 +22,7 @@ func _process(delta):
 
 # Destroy Self 
 func _on_hit(body):
-	if body is Swappable:
+	if body is Swappable or body is MetalBar:
 		body.destroy_self()
 
 	if not body is Bouncer:

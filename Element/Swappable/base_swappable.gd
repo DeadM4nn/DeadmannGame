@@ -59,8 +59,13 @@ func _ready():
 	behaviour_value[BEHAVIOURS.IS_PICKUP] = pickup
 	behaviour_value[BEHAVIOURS.IS_TROPHY] = trophy
 	
-	
 	set_behaviour()
+	
+
+	## IF wall switch on and off again
+	if behaviour_value[BEHAVIOURS.IS_WALL]:
+		set_freeze_enabled(false)
+		set_freeze_enabled(false)	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -110,13 +115,14 @@ func set_behaviour():
 	
 	# If the Swappable is wall
 	if behaviour_value[BEHAVIOURS.IS_WALL]:
-		call_deferred("set_freeze_enabled", true)
+		set_freeze_enabled(true)
 		$Wall/Shape.call_deferred("set_disabled", false)
 		$Size/Shadow.visible = false
 	else:
-		call_deferred("set_freeze_enabled", false)
+		set_freeze_enabled(false)
 		$Wall/Shape.call_deferred("set_disabled", true)
 		$Size/Shadow.visible = true
+
 	
 	# If the Swapppable is 
 	if behaviour_value[BEHAVIOURS.IS_TROPHY]:

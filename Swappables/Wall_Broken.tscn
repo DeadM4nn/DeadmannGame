@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cfghwmxeqrsid"]
+[gd_scene load_steps=5 format=3 uid="uid://dtfpkg1ldin68"]
 
 [ext_resource type="PackedScene" uid="uid://yfvcmsf6ldym" path="res://Element/Swappable/base_swappable.tscn" id="1_j2idp"]
 [ext_resource type="Texture2D" uid="uid://igv1m16aeflr" path="res://Asset/Tile/Dungeon Tile/Wall2.png" id="2_qsdka"]
