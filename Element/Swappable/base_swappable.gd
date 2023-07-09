@@ -89,11 +89,11 @@ func set_behaviour():
 	if behaviour_value[BEHAVIOURS.IS_FLYING]:
 		$Wings.play("Flap_Wings")
 		# Make it uncollidable with walls
-		set_collision_mask_value(23, false)
+		set_collision_mask_value(22, false)
 	else:
 		$Wings.play("RESET")
 		# Make it collidable with walls
-		set_collision_mask_value(23, true)
+		set_collision_mask_value(22, true)
 		
 	# If the Swappable is dangerous
 	if behaviour_value[BEHAVIOURS.IS_DANGEROUS]:

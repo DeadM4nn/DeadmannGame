@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://xkqti6cpj6wj"]
+[gd_scene load_steps=7 format=3 uid="uid://xkqti6cpj6wj"]
 
 [ext_resource type="PackedScene" uid="uid://yfvcmsf6ldym" path="res://Element/Swappable/base_swappable.tscn" id="1_w7i04"]
+[ext_resource type="Texture2D" uid="uid://c74ixgnnbfyxs" path="res://Asset/Tile/Dungeon Tile/Wall_enemy.png" id="2_qt0wa"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mb8cm"]
 radius = 164.0
@@ -22,14 +23,14 @@ flying = false
 chasing = false
 wall = true
 
-[node name="Skull" parent="BaseSwappable/Size/Flapping/Floating/Sprite" index="0"]
-visible = false
+[node name="Sprite" parent="BaseSwappable/Size/Flapping/Floating" index="0"]
+scale = Vector2(1.963, 2)
+texture = ExtResource("2_qt0wa")
 
 [node name="Fuse" parent="BaseSwappable/Size/Flapping/Floating/Sprite" index="1"]
 visible = false
-
-[node name="CPUParticles2D" parent="BaseSwappable/Size/Flapping/Floating/Sprite/Fuse" index="0"]
-visible = false
+position = Vector2(43.8105, -41.5)
+scale = Vector2(1.5454, 1.5454)
 
 [node name="Crown" parent="BaseSwappable/Size/Flapping/Floating/Sprite" index="2"]
 visible = false
@@ -38,6 +39,7 @@ visible = false
 visible = false
 
 [node name="CollisionShape2D" parent="BaseSwappable" index="1"]
+visible = false
 position = Vector2(-3, 1)
 scale = Vector2(1, 1)
 shape = SubResource("CapsuleShape2D_mb8cm")
@@ -47,6 +49,7 @@ visible = true
 position = Vector2(0, 0)
 
 [node name="CollisionShape2D" parent="BaseSwappable/EyeSight" index="0"]
+visible = false
 shape = SubResource("CircleShape2D_tji0v")
 
 [node name="Chat" parent="BaseSwappable" index="5"]
@@ -56,7 +59,6 @@ position = Vector2(142, -106)
 position = Vector2(0, 0)
 
 [node name="Shape" parent="BaseSwappable/Touch" index="0"]
-visible = true
 position = Vector2(0, 0)
 shape = SubResource("CircleShape2D_m8rke")
 
@@ -65,6 +67,7 @@ visible = true
 position = Vector2(0, 0)
 
 [node name="Shape" parent="BaseSwappable/Wall" index="0"]
+visible = false
 position = Vector2(-1, 0)
 shape = SubResource("CircleShape2D_xd05r")
 

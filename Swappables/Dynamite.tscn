@@ -50,6 +50,7 @@ position = Vector2(-0.983521, 87)
 scale = Vector2(-2.02563, -0.550816)
 
 [node name="CollisionShape2D" parent="BaseSwappable" index="1"]
+visible = false
 position = Vector2(11, -7)
 shape = SubResource("CircleShape2D_0kars")
 
@@ -68,7 +69,6 @@ position = Vector2(70, -39)
 position = Vector2(0, 0)
 
 [node name="Shape" parent="BaseSwappable/Touch" index="0"]
-visible = true
 position = Vector2(0, -21)
 shape = SubResource("CircleShape2D_267mk")
 
@@ -77,6 +77,7 @@ visible = true
 position = Vector2(0, 0)
 
 [node name="Shape" parent="BaseSwappable/Wall" index="0"]
+visible = false
 position = Vector2(0, 6)
 shape = SubResource("CircleShape2D_tyf1c")
 

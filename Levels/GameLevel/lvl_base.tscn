@@ -6,9 +6,26 @@
 [node name="Node2D" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_bg75q")]
-position = Vector2(2992, -754)
+z_index = 10
+z_as_relative = false
+position = Vector2(1943, -688)
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("2_73705")
 format = 2
-layer_0/tile_data = PackedInt32Array(-393202, 0, 131072, -262135, 0, 196608, -262129, 0, 262144, -131062, 0, 327680, -131059, 0, 393216)
+layer_0/name = "Void"
+layer_0/tile_data = PackedInt32Array(-393202, 0, 131072, -262129, 0, 262144, -131062, 0, 327680, -131059, 0, 393216, -327670, 0, 458752, -393205, 0, 524288, -524276, 0, 589824, -262135, 0, 655360, -262134, 1, 0, -196598, 1, 0, -196599, 0, 655360, -196600, 1, 0, -196601, 1, 0, -196602, 1, 0, -196603, 2, 0, -262139, 2, 0, -262138, 1, 0, -262137, 1, 0, -262136, 1, 0, -327679, 0, 196608, -327678, 0, 196608, -327677, 0, 196608, -327676, 0, 196608, -327675, 0, 196608, -131068, 0, 655360, -393201, 0, 131072, -393200, 0, 131072, -393199, 0, 131072, -262133, 1, 0, -131067, 0, 131072)
+layer_1/name = "Floor"
+layer_1/enabled = true
+layer_1/modulate = Color(1, 1, 1, 1)
+layer_1/y_sort_enabled = false
+layer_1/y_sort_origin = 0
+layer_1/z_index = 0
+layer_1/tile_data = PackedInt32Array(-131063, 1, 0, -131064, 1, 0, -196600, 1, 0, -196601, 1, 0, -196602, 1, 0, -262138, 1, 0, -262137, 1, 0, -327673, 1, 0, -327672, 1, 0, -262136, 1, 0, -262135, 1, 0, -262134, 1, 0, -196598, 1, 0, -196599, 1, 0, -131066, 1, 0, -131062, 1, 0, -196606, 6, 0)
+layer_2/name = ""
+layer_2/enabled = true
+layer_2/modulate = Color(1, 1, 1, 1)
+layer_2/y_sort_enabled = false
+layer_2/y_sort_origin = -5
+layer_2/z_index = -5
+layer_2/tile_data = PackedInt32Array(-131065, 6, 0)

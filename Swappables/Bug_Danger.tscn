@@ -1,0 +1,85 @@
+[gd_scene load_steps=7 format=3 uid="uid://c8l4xxrv4s8w2"]
+
+[ext_resource type="PackedScene" uid="uid://yfvcmsf6ldym" path="res://Element/Swappable/base_swappable.tscn" id="1_54h4o"]
+[ext_resource type="Texture2D" uid="uid://cpvn6q40o3byt" path="res://Asset/Swappables/Bug.png" id="2_hp6fk"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_acs7j"]
+radius = 53.6283
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cn3oa"]
+radius = 865.486
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_eg1iv"]
+radius = 68.1175
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ug73n"]
+radius = 57.7062
+
+[node name="Bug" type="Node2D"]
+
+[node name="BaseSwappable" parent="." instance=ExtResource("1_54h4o")]
+dangerous = true
+
+[node name="Sprite" parent="BaseSwappable/Size/Flapping/Floating" index="0"]
+position = Vector2(1.99998, 70)
+scale = Vector2(2.11097, 2.15075)
+texture = ExtResource("2_hp6fk")
+offset = Vector2(0, -10.945)
+
+[node name="Skull" parent="BaseSwappable/Size/Flapping/Floating/Sprite" index="0"]
+visible = false
+position = Vector2(-18.9496, 8.83379)
+rotation = -0.00637972
+scale = Vector2(0.526559, 0.526559)
+
+[node name="Fuse" parent="BaseSwappable/Size/Flapping/Floating/Sprite" index="1"]
+visible = false
+position = Vector2(-9.9527, 17.8784)
+scale = Vector2(0.869443, 0.869443)
+
+[node name="Crown" parent="BaseSwappable/Size/Flapping/Floating/Sprite" index="2"]
+visible = false
+position = Vector2(-11.7626, 6.52063)
+scale = Vector2(0.971663, 0.959773)
+
+[node name="Shadow" parent="BaseSwappable/Size" index="1"]
+position = Vector2(-1, 108)
+scale = Vector2(2.25385, 0.612874)
+
+[node name="CollisionShape2D" parent="BaseSwappable" index="1"]
+visible = false
+position = Vector2(0, -10)
+scale = Vector2(0.786933, 0.786933)
+shape = SubResource("CircleShape2D_acs7j")
+
+[node name="EyeSight" parent="BaseSwappable" index="3"]
+visible = true
+position = Vector2(0, 0)
+
+[node name="CollisionShape2D" parent="BaseSwappable/EyeSight" index="0"]
+visible = false
+shape = SubResource("CircleShape2D_cn3oa")
+
+[node name="Point_to_player" parent="BaseSwappable" index="4"]
+position = Vector2(0, 0)
+
+[node name="Chat" parent="BaseSwappable" index="5"]
+position = Vector2(51, -29)
+
+[node name="Touch" parent="BaseSwappable" index="10"]
+position = Vector2(0, 0)
+
+[node name="Shape" parent="BaseSwappable/Touch" index="0"]
+position = Vector2(0, -14)
+shape = SubResource("CircleShape2D_eg1iv")
+
+[node name="Wall" parent="BaseSwappable" index="11"]
+visible = true
+position = Vector2(0, 0)
+
+[node name="Shape" parent="BaseSwappable/Wall" index="0"]
+visible = false
+position = Vector2(0, -16)
+shape = SubResource("CircleShape2D_ug73n")
+
+[editable path="BaseSwappable"]

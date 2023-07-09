@@ -4,15 +4,19 @@
 [ext_resource type="Script" path="res://Class/MetalBar.tres.gd" id="1_sku8p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_407ia"]
-size = Vector2(60, 64)
+size = Vector2(238, 258)
 
-[node name="Node2D" type="StaticBody2D"]
+[node name="MetalBar" type="StaticBody2D"]
 collision_layer = 4194304
 collision_mask = 0
 script = ExtResource("1_sku8p")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 7
+z_as_relative = false
+scale = Vector2(4, 4)
 texture = ExtResource("1_lphea")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("RectangleShape2D_407ia")

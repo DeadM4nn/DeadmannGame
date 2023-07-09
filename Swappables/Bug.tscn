@@ -26,9 +26,8 @@ texture = ExtResource("2_qvrwa")
 offset = Vector2(0, -10.945)
 
 [node name="Skull" parent="BaseSwappable/Size/Flapping/Floating/Sprite" index="0"]
-visible = false
-position = Vector2(-16.0947, 16.9843)
-rotation = -0.683662
+position = Vector2(-12.7905, 5.57841)
+rotation = -0.000745595
 scale = Vector2(0.526559, 0.526559)
 
 [node name="Fuse" parent="BaseSwappable/Size/Flapping/Floating/Sprite" index="1"]
@@ -46,6 +45,7 @@ position = Vector2(-1, 108)
 scale = Vector2(2.25385, 0.612874)
 
 [node name="CollisionShape2D" parent="BaseSwappable" index="1"]
+visible = false
 position = Vector2(0, -10)
 scale = Vector2(0.786933, 0.786933)
 shape = SubResource("CircleShape2D_acs7j")
@@ -55,6 +55,7 @@ visible = true
 position = Vector2(0, 0)
 
 [node name="CollisionShape2D" parent="BaseSwappable/EyeSight" index="0"]
+visible = false
 shape = SubResource("CircleShape2D_cn3oa")
 
 [node name="Point_to_player" parent="BaseSwappable" index="4"]
@@ -67,7 +68,6 @@ position = Vector2(51, -29)
 position = Vector2(0, 0)
 
 [node name="Shape" parent="BaseSwappable/Touch" index="0"]
-visible = true
 position = Vector2(0, -14)
 shape = SubResource("CircleShape2D_eg1iv")
 
@@ -76,6 +76,7 @@ visible = true
 position = Vector2(0, 0)
 
 [node name="Shape" parent="BaseSwappable/Wall" index="0"]
+visible = false
 position = Vector2(0, -16)
 shape = SubResource("CircleShape2D_ug73n")
 

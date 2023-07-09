@@ -1,11 +1,18 @@
-[gd_resource type="TileSet" load_steps=8 format=3 uid="uid://cwao62jnlavpm"]
+[gd_resource type="TileSet" load_steps=18 format=3 uid="uid://cwao62jnlavpm"]
 
 [ext_resource type="PackedScene" uid="uid://yfvcmsf6ldym" path="res://Element/Swappable/base_swappable.tscn" id="1_8vx53"]
+[ext_resource type="PackedScene" uid="uid://73vyr3hsu40v" path="res://Element/MetalBar/MetalBar.tscn" id="2_2g228"]
 [ext_resource type="PackedScene" uid="uid://xkqti6cpj6wj" path="res://Swappables/Wall.tscn" id="2_dgyic"]
 [ext_resource type="PackedScene" uid="uid://cx8r7jdtji7j6" path="res://Swappables/Dynamite.tscn" id="3_i4u3g"]
 [ext_resource type="PackedScene" uid="uid://gsgvuv8gvn6j" path="res://Swappables/Goal.tscn" id="4_m4d0s"]
 [ext_resource type="PackedScene" uid="uid://dbn8awnq6jpem" path="res://Swappables/Cobweb.tscn" id="5_7ius7"]
 [ext_resource type="PackedScene" uid="uid://dk5hjfgivs2ri" path="res://Swappables/Bug.tscn" id="6_yogr6"]
+[ext_resource type="PackedScene" uid="uid://bwyyp4r3a5q4d" path="res://Swappables/Spider.tscn" id="7_foyv3"]
+[ext_resource type="PackedScene" uid="uid://dj7kblvp040rv" path="res://Swappables/Spider_Danger.tscn" id="8_4o87v"]
+[ext_resource type="PackedScene" uid="uid://c8l4xxrv4s8w2" path="res://Swappables/Bug_Danger.tscn" id="9_2u83a"]
+[ext_resource type="Texture2D" uid="uid://0it0lhg56xol" path="res://Asset/Tile/Default/metal_block.png" id="10_iibh4"]
+[ext_resource type="Texture2D" uid="uid://b88or3ta17n6r" path="res://Asset/Tile/Dungeon Tile/Wall.png" id="12_iroaf"]
+[ext_resource type="Texture2D" uid="uid://dhrdajr88d4cg" path="res://Asset/Tile/Dungeon Tile/VOID.png" id="13_wa8f2"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_k8aur"]
 resource_name = "Swappables"
@@ -15,7 +22,47 @@ scenes/3/scene = ExtResource("3_i4u3g")
 scenes/4/scene = ExtResource("4_m4d0s")
 scenes/5/scene = ExtResource("5_7ius7")
 scenes/6/scene = ExtResource("6_yogr6")
+scenes/7/scene = ExtResource("7_foyv3")
+scenes/8/scene = ExtResource("8_4o87v")
+scenes/9/scene = ExtResource("9_2u83a")
+scenes/10/scene = ExtResource("2_2g228")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yn8fb"]
+resource_name = "Floor"
+texture = ExtResource("10_iibh4")
+texture_region_size = Vector2i(256, 256)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_1/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_1/angular_velocity = 0.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_biqmk"]
+texture = ExtResource("12_iroaf")
+texture_region_size = Vector2i(256, 256)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-128, -128, 128, -128, 128, 128, -128, 128)
+0:0/0/physics_layer_1/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_1/angular_velocity = 0.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vlaq2"]
+texture = ExtResource("13_wa8f2")
+texture_region_size = Vector2i(256, 256)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_1/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_1/angular_velocity = 0.0
+0:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(-128, -128, 128, -128, 128, 128, -128, 128)
 
 [resource]
 tile_size = Vector2i(256, 256)
+physics_layer_0/collision_layer = 2
+physics_layer_1/collision_layer = 2097152
+physics_layer_1/collision_mask = 0
 sources/0 = SubResource("TileSetScenesCollectionSource_k8aur")
+sources/1 = SubResource("TileSetAtlasSource_yn8fb")
+sources/2 = SubResource("TileSetAtlasSource_biqmk")
+sources/6 = SubResource("TileSetAtlasSource_vlaq2")

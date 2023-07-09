@@ -44,6 +44,7 @@ rotation = -0.500368
 scale = Vector2(0.908347, 0.897231)
 
 [node name="CollisionShape2D" parent="BaseSwappable" index="1"]
+visible = false
 position = Vector2(0, 0)
 shape = SubResource("CircleShape2D_5s064")
 
@@ -52,6 +53,7 @@ visible = true
 position = Vector2(0, 0)
 
 [node name="CollisionShape2D" parent="BaseSwappable/EyeSight" index="0"]
+visible = false
 scale = Vector2(0.935158, 0.935158)
 
 [node name="Chat" parent="BaseSwappable" index="5"]
@@ -67,7 +69,6 @@ visible = false
 position = Vector2(0, 0)
 
 [node name="Shape" parent="BaseSwappable/Touch" index="0"]
-visible = true
 position = Vector2(0, 0)
 shape = SubResource("CircleShape2D_45jhv")
 
@@ -76,6 +77,7 @@ visible = true
 position = Vector2(0, 0)
 
 [node name="Shape" parent="BaseSwappable/Wall" index="0"]
+visible = false
 position = Vector2(0, 0)
 shape = SubResource("CircleShape2D_7mxgq")
 

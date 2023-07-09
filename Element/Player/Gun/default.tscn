@@ -20,7 +20,7 @@ position = Vector2(353, -44)
 wait_time = 0.8
 autostart = true
 
-[node name="Audio" type="Node" parent="."]
+[node name="Audio" type="Node2D" parent="."]
 
 [node name="Shoot" type="AudioStreamPlayer2D" parent="Audio"]
 stream = ExtResource("3_w8oad")

@@ -1,9 +1,10 @@
+res://Levels/GameLevel/lvl_base.tscn
 res://Asset/TileSet/Map.tres
 res://Swappables/Goal.tscn
-res://Levels/GameLevel/lvl_base.tscn
-res://Element/Swappable/base_swappable.tscn
 res://Swappables/Wall.tscn
+res://Swappables/Spider_Danger.tscn
 res://Swappables/Dynamite.tscn
 res://Swappables/Cobweb.tscn
+res://Swappables/Bug_Danger.tscn
 res://Swappables/Bug.tscn
-res://Element/Player/PlayerControl.gd
+res://Element/Player/Gun/Bullet/default.tscn
