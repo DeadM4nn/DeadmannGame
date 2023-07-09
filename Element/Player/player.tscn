@@ -220,8 +220,6 @@ script = ExtResource("1_hsark")
 ZOOM_MAX = 2.0
 
 [node name="Sprite" type="Node2D" parent="."]
-z_index = 5
-z_as_relative = false
 position = Vector2(1, 0)
 
 [node name="Move" type="Node2D" parent="Sprite"]
@@ -229,15 +227,11 @@ position = Vector2(3.16745, 10.2708)
 scale = Vector2(0.733876, 0.733876)
 
 [node name="Legs" type="Sprite2D" parent="Sprite/Move"]
-z_index = 5
-z_as_relative = false
 position = Vector2(-26.1181, 6.44414)
 scale = Vector2(1.72676, 1.72676)
 texture = ExtResource("2_ypuk2")
 
 [node name="UpperBody" type="Sprite2D" parent="Sprite"]
-z_index = 5
-z_as_relative = false
 position = Vector2(-16, -7)
 scale = Vector2(1.31234, 1.08739)
 texture = ExtResource("3_yovud")
@@ -275,8 +269,7 @@ texture = ExtResource("3_myggk")
 
 [node name="Shadow" type="Sprite2D" parent="Sprite"]
 modulate = Color(0.246094, 0.34375, 0.109375, 1)
-z_index = 4
-z_as_relative = false
+z_index = -1
 position = Vector2(2.47038, 42)
 scale = Vector2(1.39155, 0.486007)
 texture = ExtResource("5_roufa")
@@ -287,14 +280,11 @@ texture = ExtResource("5_roufa")
 wait_time = 0.48
 
 [node name="Gun Pivot" type="Node2D" parent="."]
-z_index = 6
-z_as_relative = false
 position = Vector2(-33, -1)
 
 [node name="GunAndHand" type="Node2D" parent="Gun Pivot"]
 
 [node name="Gun" parent="Gun Pivot/GunAndHand" instance=ExtResource("2_lkwsr")]
-z_index = 90
 position = Vector2(15, -5)
 scale = Vector2(0.291684, 0.291684)
 player = NodePath("../../..")
@@ -303,7 +293,6 @@ player = NodePath("../../..")
 position = Vector2(394.262, -44)
 
 [node name="Hand" type="Sprite2D" parent="Gun Pivot/GunAndHand"]
-z_index = 91
 position = Vector2(14, 3)
 rotation = -0.00268751
 scale = Vector2(1.10314, 1.1544)
