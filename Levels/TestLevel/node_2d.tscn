@@ -4,11 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://cqqjvf50n73a3" path="res://Asset/Tile/Dungeon Tile/Floor 3x3.png" id="2_4p27a"]
 [ext_resource type="Texture2D" uid="uid://b88or3ta17n6r" path="res://Asset/Tile/Dungeon Tile/Wall.png" id="2_pkxy5"]
 [ext_resource type="Texture2D" uid="uid://cvvfufuc1nb6o" path="res://Asset/Tile/Dungeon Tile/Void1.png" id="3_qj554"]
-[ext_resource type="PackedScene" uid="uid://cfghwmxeqrsid" path="res://Swappables/Wall.tscn" id="4_nc08k"]
 [ext_resource type="Texture2D" uid="uid://n72sunuti4ao" path="res://Asset/Swappables/Door.png" id="4_pkjrc"]
 [ext_resource type="Texture2D" uid="uid://igv1m16aeflr" path="res://Asset/Tile/Dungeon Tile/Wall2.png" id="5_bmssw"]
 [ext_resource type="PackedScene" uid="uid://h2vv2wukv8vf" path="res://Element/Swappable/crown.tscn" id="5_rmpp6"]
 [ext_resource type="PackedScene" uid="uid://d2jbto42a77b2" path="res://Element/Bouncer.tscn" id="5_vu8g6"]
+[ext_resource type="PackedScene" uid="uid://mf1215ctjuw4" path="res://Swappables/Cobweb.tscn" id="6_qubp3"]
 [ext_resource type="PackedScene" uid="uid://yfvcmsf6ldym" path="res://Element/Swappable/base_swappable.tscn" id="6_ukruq"]
 [ext_resource type="PackedScene" uid="uid://c2qy74u4hqxla" path="res://Element/Wall/Bouncer.tscn" id="7_hyvd4"]
 
@@ -105,6 +105,7 @@ _bundled = {
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_n2cbs"]
 scenes/1/scene = SubResource("PackedScene_wkucb")
+scenes/2/scene = ExtResource("6_qubp3")
 
 [sub_resource type="TileSet" id="TileSet_116ru"]
 tile_size = Vector2i(64, 64)
@@ -143,14 +144,14 @@ layer_2/modulate = Color(1, 1, 1, 1)
 layer_2/y_sort_enabled = false
 layer_2/y_sort_origin = 0
 layer_2/z_index = 0
-layer_2/tile_data = PackedInt32Array(458748, 1, 0, 458749, 1, 0, 524285, 1, 0, 589821, 1, 0, 655357, 1, 0, 720893, 1, 0, 786429, 1, 0, 786430, 1, 0, 786431, 1, 0, 720896, 1, 0, 720897, 1, 0, 720898, 1, 0, 720899, 1, 0, 720900, 1, 0, 458756, 1, 0, 524292, 1, 0, 589828, 1, 0, 655364, 1, 0, 458757, 1, 0, 393221, 1, 0, 458758, 1, 0, 458759, 1, 0, 393223, 1, 0, 458760, 1, 0, 393224, 1, 0, -65528, 1, 0, 8, 1, 0, 65544, 1, 0, 131080, 1, 0, 196616, 1, 0, 262152, 1, 0, 327688, 1, 0, 262151, 1, 0, -65535, 1, 0, -65534, 1, 0, -65533, 1, 0, -65532, 1, 0, -65531, 1, 0, -65530, 1, 0, -65529, 1, 0, 1, 1, 0, 65537, 1, 0, 131073, 1, 0, 196609, 1, 0, 262145, 1, 0, 262146, 1, 0, 262147, 1, 0, 262148, 1, 0, 262149, 1, 0, 327676, 1, 0, 327677, 1, 0, 327678, 1, 0, 327679, 1, 0, -131076, 1, 0, -65540, 1, 0, -4, 1, 0, 65532, 1, 0, 131068, 1, 0, 196604, 1, 0, 262140, 1, 0, -131075, 1, 0, -131074, 1, 0, -131073, 1, 0, -196608, 1, 0, -196607, 1, 0, -131071, 1, 0, -8, 1, 0, -7, 1, 0, -6, 1, 0, -5, 1, 0, 65528, 1, 0, 131064, 1, 0, 196600, 1, 0, 262136, 1, 0, 327672, 1, 0, 393208, 1, 0, 458744, 1, 0, 524280, 1, 0, 524281, 1, 0, 524282, 1, 0, 524283, 1, 0, 524284, 1, 0, 393220, 2, 0, 327684, 2, 0, -3, 2, 0, -2, 2, 0, -65538, 2, 0)
+layer_2/tile_data = PackedInt32Array(458748, 1, 0, 458749, 1, 0, 524285, 1, 0, 589821, 1, 0, 655357, 1, 0, 720893, 1, 0, 786429, 1, 0, 786430, 1, 0, 786431, 1, 0, 720896, 1, 0, 720897, 1, 0, 720898, 1, 0, 720899, 1, 0, 720900, 1, 0, 458756, 1, 0, 524292, 1, 0, 589828, 1, 0, 655364, 1, 0, 458757, 1, 0, 393221, 1, 0, 458758, 1, 0, 458759, 1, 0, 393223, 1, 0, 458760, 1, 0, 393224, 1, 0, -65528, 1, 0, 8, 1, 0, 65544, 1, 0, 131080, 1, 0, 196616, 1, 0, 262152, 1, 0, 327688, 1, 0, 262151, 1, 0, -65535, 1, 0, -65534, 1, 0, -65533, 1, 0, -65532, 1, 0, -65531, 1, 0, -65530, 1, 0, -65529, 1, 0, 1, 1, 0, 65537, 1, 0, 131073, 1, 0, 196609, 1, 0, 262145, 1, 0, 262147, 1, 0, 262148, 1, 0, 262149, 1, 0, 327676, 1, 0, 327677, 1, 0, 327678, 1, 0, 327679, 1, 0, -131076, 1, 0, -65540, 1, 0, -4, 1, 0, 65532, 1, 0, 131068, 1, 0, 196604, 1, 0, 262140, 1, 0, -131075, 1, 0, -131074, 1, 0, -131073, 1, 0, -196608, 1, 0, -196607, 1, 0, -131071, 1, 0, -8, 1, 0, -7, 1, 0, -6, 1, 0, -5, 1, 0, 65528, 1, 0, 131064, 1, 0, 196600, 1, 0, 262136, 1, 0, 327672, 1, 0, 393208, 1, 0, 458744, 1, 0, 524280, 1, 0, 524281, 1, 0, 524282, 1, 0, 524283, 1, 0, 524284, 1, 0, 393220, 2, 0, 327684, 2, 0, -3, 2, 0, -2, 2, 0, -65538, 2, 0, 262146, 65536, 1)
 layer_3/name = "Element"
 layer_3/enabled = true
 layer_3/modulate = Color(1, 1, 1, 1)
 layer_3/y_sort_enabled = false
 layer_3/y_sort_origin = 0
 layer_3/z_index = 0
-layer_3/tile_data = PackedInt32Array()
+layer_3/tile_data = PackedInt32Array(4, 3, 131072, 65540, 3, 131072, 131076, 3, 131072, 196612, 3, 131072, 65539, 3, 131072, 65538, 3, 131072)
 
 [node name="Player" parent="." instance=ExtResource("1_hriob")]
 collision_mask = 4194306
@@ -181,10 +182,9 @@ dangerous = false
 pickup = false
 
 [node name="Fly3" parent="." instance=ExtResource("6_ukruq")]
-position = Vector2(-179, 138.521)
+position = Vector2(-1247, 287.227)
 flying = true
 chasing = true
-dangerous = false
 pickup = false
 
 [node name="Fly4" parent="." instance=ExtResource("6_ukruq")]
@@ -202,11 +202,5 @@ lock_rotation = true
 position = Vector2(142, 212)
 mass = 9000.0
 physics_material_override = SubResource("PhysicsMaterial_o8cd6")
-
-[node name="Node2D" parent="." instance=ExtResource("4_nc08k")]
-position = Vector2(-588, -235.281)
-
-[node name="Node2D2" parent="." instance=ExtResource("4_nc08k")]
-position = Vector2(-333, -235.281)
 
 [editable path="Fly2"]

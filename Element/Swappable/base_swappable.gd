@@ -20,6 +20,7 @@ signal danger_touched_player
 @export var jump_force : float = 0
 
 
+var is_facing_opposite = false
 var is_flipped = false
 
 ## The pointer that points to the player
@@ -65,21 +66,22 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	
-	var old_sprite_flip_h = sprite.flip_h
 	
 	## Constantly point to player if player is in the range
 	if player != null and behaviour_value[BEHAVIOURS.IS_CHASING]:
 		$Point_to_player.look_at(player.global_position)
-		if player.global_position < global_position:
-			sprite.flip_h = false
-		else:
-			sprite.flip_h = true
+#		if player.global_position > global_position and not is_facing_opposite:
+#			is_facing_opposite = true
+#			sprite.scale.x *= -1
+#		elif player.global_position <= global_position and is_facing_opposite:
+#			sprite.scale.x *= -1
+#			is_facing_opposite = false
 		
-		## Flip the skipp
-		if not sprite.flip_h and $Size/Flapping/Floating/Sprite/Skull.scale.x < 0:
-			$Size/Flapping/Floating/Sprite/Skull.scale.x *= -1
-		elif sprite.flip_h and $Size/Flapping/Floating/Sprite/Skull.scale.x >= 0 : 
-			$Size/Flapping/Floating/Sprite/Skull.scale.x *= -1
+#		## Flip the skipp
+#		if not sprite.flip_h and $Size/Flapping/Floating/Sprite/Skull.scale.x < 0:
+#			$Size/Flapping/Floating/Sprite/Skull.scale.x *= -1
+#		elif sprite.flip_h and $Size/Flapping/Floating/Sprite/Skull.scale.x >= 0 : 
+#			$Size/Flapping/Floating/Sprite/Skull.scale.x *= -1
 
 # Apply the changes made to the is_flags
 func set_behaviour():

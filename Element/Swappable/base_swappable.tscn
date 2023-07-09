@@ -42,10 +42,10 @@ shader_parameter/dissolve_value = 0.341
 shader_parameter/dissolve_texture = SubResource("NoiseTexture2D_fe0jd")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_u352e"]
-radius = 53.8424
+radius = 87.5881
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_30520"]
-radius = 725.276
+radius = 148.661
 
 [sub_resource type="Animation" id="Animation_rmpsy"]
 resource_name = "Flap_Wings"
@@ -136,10 +136,10 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_el2j4"]
-radius = 75.1066
+radius = 121.594
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cyhsj"]
-radius = 52.1536
+radius = 71.007
 
 [node name="BaseSwappable" type="RigidBody2D"]
 collision_layer = 2147483648

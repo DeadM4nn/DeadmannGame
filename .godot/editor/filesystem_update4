@@ -1,6 +1,6 @@
+res://Levels/TestLevel/node_2d.tscn
 res://Element/Player/player.tscn
 res://Element/Player/Gun/Bullet/default.tscn
 res://Element/Swappable/base_swappable.tscn
-res://Element/Swappable/base_swappable.gd
-res://Levels/TestLevel/node_2d.tscn
-res://Swappables/Wall.tscn
+res://Swappables/Cobweb.tscn
+res://Swappables/Wall_Broken.tscn
