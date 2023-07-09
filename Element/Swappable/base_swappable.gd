@@ -26,7 +26,7 @@ var is_flipped = false
 var player : Player = null
 
 ## The Sprite
-@onready var sprite : Sprite2D = get_node("Sprite/Sprite")
+@onready var sprite : Sprite2D = get_node("Size/Flapping/Floating/Sprite")
 
 enum BEHAVIOURS {
 	IS_FLYING, # Uncollidable to Walls 
@@ -76,10 +76,10 @@ func _process(delta):
 			sprite.flip_h = true
 		
 		## Flip the skipp
-		if not sprite.flip_h and $Sprite/Sprite/Skull.scale.x < 0:
-			$Sprite/Sprite/Skull.scale.x *= -1
-		elif sprite.flip_h and $Sprite/Sprite/Skull.scale.x >= 0 : 
-			$Sprite/Sprite/Skull.scale.x *= -1
+		if not sprite.flip_h and $Size/Flapping/Floating/Sprite/Skull.scale.x < 0:
+			$Size/Flapping/Floating/Sprite/Skull.scale.x *= -1
+		elif sprite.flip_h and $Size/Flapping/Floating/Sprite/Skull.scale.x >= 0 : 
+			$Size/Flapping/Floating/Sprite/Skull.scale.x *= -1
 
 # Apply the changes made to the is_flags
 func set_behaviour():
@@ -88,17 +88,17 @@ func set_behaviour():
 	if behaviour_value[BEHAVIOURS.IS_FLYING]:
 		$Wings.play("Flap_Wings")
 		# Make it uncollidable with walls
-		set_collision_mask_value(2, false)
+		set_collision_mask_value(23, false)
 	else:
 		$Wings.play("RESET")
 		# Make it collidable with walls
-		set_collision_mask_value(2, true)
+		set_collision_mask_value(23, true)
 		
 	# If the Swappable is dangerous
 	if behaviour_value[BEHAVIOURS.IS_DANGEROUS]:
-		$Sprite/Sprite/Skull.visible = true
+		$Size/Flapping/Floating/Sprite/Skull.visible = true
 	else:
-		$Sprite/Sprite/Skull.visible = false
+		$Size/Flapping/Floating/Sprite/Skull.visible = false
 	
 	# If the Swappable is voletile
 	if behaviour_value[BEHAVIOURS.IS_VOLETILE]:
@@ -110,9 +110,11 @@ func set_behaviour():
 	if behaviour_value[BEHAVIOURS.IS_WALL]:
 		call_deferred("set_freeze_enabled", true)
 		$Wall/Shape.call_deferred("set_disabled", false)
+		$Size/Shadow.visible = false
 	else:
 		call_deferred("set_freeze_enabled", false)
 		$Wall/Shape.call_deferred("set_disabled", true)
+		$Size/Shadow.visible = true
 	
 	# If the Swapppable is 
 	if behaviour_value[BEHAVIOURS.IS_TROPHY]:
@@ -183,7 +185,7 @@ func destroy_self():
 ## Returns the swappable sprite
 func pickup_swappable() -> Texture2D:
 	queue_free()
-	return get_node("Sprite/Sprite").texture
+	return $Size/Flapping/Floating/Sprite.texture
 
 
 func reset_behaviour():
