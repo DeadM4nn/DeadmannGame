@@ -1,3 +1,4 @@
+TileMap
 StaticBody2D
 CollisionShape2D
 ShapeCast2D
@@ -15,7 +16,6 @@ Swappable
 Timer
 CollisionPolygon2D
 DampedSpringJoint2D
-TileMap
 SubViewportContainer
 SubViewport
 TextureRect

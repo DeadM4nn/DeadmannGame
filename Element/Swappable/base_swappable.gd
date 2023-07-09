@@ -60,12 +60,7 @@ func _ready():
 	behaviour_value[BEHAVIOURS.IS_TROPHY] = trophy
 	
 	set_behaviour()
-	
 
-	## IF wall switch on and off again
-	if behaviour_value[BEHAVIOURS.IS_WALL]:
-		set_freeze_enabled(false)
-		set_freeze_enabled(false)	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -75,18 +70,17 @@ func _process(delta):
 	## Constantly point to player if player is in the range
 	if player != null and behaviour_value[BEHAVIOURS.IS_CHASING]:
 		$Point_to_player.look_at(player.global_position)
-#		if player.global_position > global_position and not is_facing_opposite:
-#			is_facing_opposite = true
-#			sprite.scale.x *= -1
-#		elif player.global_position <= global_position and is_facing_opposite:
-#			sprite.scale.x *= -1
-#			is_facing_opposite = false
+
+		## Flip the skipp
+		var flip_focus = $Size/Flapping/Floating
 		
-#		## Flip the skipp
-#		if not sprite.flip_h and $Size/Flapping/Floating/Sprite/Skull.scale.x < 0:
-#			$Size/Flapping/Floating/Sprite/Skull.scale.x *= -1
-#		elif sprite.flip_h and $Size/Flapping/Floating/Sprite/Skull.scale.x >= 0 : 
-#			$Size/Flapping/Floating/Sprite/Skull.scale.x *= -1
+		if player.global_position > global_position and not is_facing_opposite:
+			is_facing_opposite = true
+			flip_focus.scale.x *= -1
+		elif player.global_position <= global_position and is_facing_opposite:
+			flip_focus.scale.x *= -1
+			is_facing_opposite = false
+
 
 # Apply the changes made to the is_flags
 func set_behaviour():
@@ -115,20 +109,20 @@ func set_behaviour():
 	
 	# If the Swappable is wall
 	if behaviour_value[BEHAVIOURS.IS_WALL]:
-		set_freeze_enabled(true)
+		call_deferred("set_freeze_enabled", true)
 		$Wall/Shape.call_deferred("set_disabled", false)
 		$Size/Shadow.visible = false
 	else:
-		set_freeze_enabled(false)
+		call_deferred("set_freeze_enabled", false)
 		$Wall/Shape.call_deferred("set_disabled", true)
 		$Size/Shadow.visible = true
 
 	
 	# If the Swapppable is 
 	if behaviour_value[BEHAVIOURS.IS_TROPHY]:
-		$Crown.visible = true
+		$Size/Flapping/Floating/Sprite/Crown.visible = true
 	else:
-		$Crown.visible = false
+		$Size/Flapping/Floating/Sprite/Crown.visible = false
 		
 	# If the Swapppable is Pickupable
 	if behaviour_value[BEHAVIOURS.IS_PICKUP]:

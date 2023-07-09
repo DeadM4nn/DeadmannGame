@@ -1,13 +1,15 @@
-[gd_scene load_steps=27 format=3 uid="uid://yfvcmsf6ldym"]
+[gd_scene load_steps=32 format=3 uid="uid://yfvcmsf6ldym"]
 
-[ext_resource type="Script" path="res://Element/Swappable/base_swappable.gd" id="1_sn41v"]
-[ext_resource type="Texture2D" uid="uid://cpvn6q40o3byt" path="res://Asset/Swappables/Bug.png" id="1_uodgk"]
-[ext_resource type="Texture2D" uid="uid://bo8x2vv0ov2ci" path="res://Asset/Sprite/Shadow.png" id="2_vqnaf"]
-[ext_resource type="Texture2D" uid="uid://b10lgryf2f00m" path="res://Asset/Sprite/Skull.png" id="4_dw7a1"]
-[ext_resource type="Texture2D" uid="uid://bl5ufipwdswcv" path="res://Asset/Sprite/Chat.png" id="4_iswoc"]
-[ext_resource type="AudioStream" uid="uid://wd8rug5b1g0x" path="res://SoundFX/Kenny/highUp.ogg" id="5_ptr2d"]
-[ext_resource type="AudioStream" uid="uid://dcxgse1hoo20i" path="res://SoundFX/Kenny/highDown.ogg" id="6_qc57a"]
-[ext_resource type="PackedScene" uid="uid://h2vv2wukv8vf" path="res://Element/Swappable/crown.tscn" id="8_uain4"]
+[ext_resource type="Script" path="res://Element/Swappable/base_swappable.gd" id="1_fexp6"]
+[ext_resource type="Texture2D" uid="uid://igv1m16aeflr" path="res://Asset/Tile/Dungeon Tile/Wall2.png" id="2_kala1"]
+[ext_resource type="Texture2D" uid="uid://b10lgryf2f00m" path="res://Asset/Sprite/Skull.png" id="3_s883a"]
+[ext_resource type="Texture2D" uid="uid://b8icw708u6nir" path="res://Asset/Swappables/fuse.png" id="4_om7lt"]
+[ext_resource type="PackedScene" uid="uid://h2vv2wukv8vf" path="res://Element/Swappable/crown.tscn" id="5_bi48u"]
+[ext_resource type="Texture2D" uid="uid://bo8x2vv0ov2ci" path="res://Asset/Sprite/Shadow.png" id="6_533m4"]
+[ext_resource type="Texture2D" uid="uid://bl5ufipwdswcv" path="res://Asset/Sprite/Chat.png" id="7_fo7sg"]
+[ext_resource type="AudioStream" uid="uid://wd8rug5b1g0x" path="res://SoundFX/Kenny/highUp.ogg" id="8_s4yv8"]
+[ext_resource type="AudioStream" uid="uid://dcxgse1hoo20i" path="res://SoundFX/Kenny/highDown.ogg" id="9_o1l3d"]
+[ext_resource type="PackedScene" uid="uid://bhkef5lt78nba" path="res://Element/Player/player.tscn" id="10_8cjye"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_cu6ri"]
 friction = 5.0
@@ -41,11 +43,23 @@ shader = SubResource("Shader_vr1m6")
 shader_parameter/dissolve_value = 0.341
 shader_parameter/dissolve_texture = SubResource("NoiseTexture2D_fe0jd")
 
+[sub_resource type="Curve" id="Curve_4evrd"]
+_data = [Vector2(0, 0.368421), 0.0, 0.0, 0, 0, Vector2(0.247253, 0.463158), 0.0, 0.0, 0, 0, Vector2(0.505495, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_oiu2x"]
+offsets = PackedFloat32Array(0.119205, 0.549669, 0.688742, 0.801324, 0.933775)
+colors = PackedColorArray(0.407843, 0, 0, 1, 0.693831, 0, 0, 1, 0.786227, 0, 0, 1, 0.861023, 0, 0, 1, 0.94902, 0, 0, 1)
+
+[sub_resource type="Gradient" id="Gradient_gfix6"]
+offsets = PackedFloat32Array(0, 0.211921, 0.490066, 0.741722, 1)
+colors = PackedColorArray(1, 0.833333, 0, 1, 1, 0.868653, 0.211921, 1, 1, 0.915011, 0.490066, 1, 1, 0.956954, 0.741722, 1, 1, 1, 1, 1)
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_u352e"]
 radius = 87.5881
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_30520"]
-radius = 148.661
+radius = 1135.35
 
 [sub_resource type="Animation" id="Animation_rmpsy"]
 resource_name = "Flap_Wings"
@@ -54,14 +68,26 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Size/Flapping:scale")
+tracks/0/path = NodePath("Size/Flapping:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 0.34151),
+"times": PackedFloat32Array(0, 0.3, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(0.93035, 0.358329), Vector2(0.61929, 1.20511)]
+"values": [Vector2(-1, -46), Vector2(-1, -46), Vector2(-1, -46)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Size/Flapping:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.8156, 0.665948), Vector2(1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_agcnu"]
@@ -77,6 +103,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Size/Flapping:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8o8qd"]
@@ -136,10 +174,10 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_el2j4"]
-radius = 121.594
+radius = 196.736
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cyhsj"]
-radius = 71.007
+radius = 84.1487
 
 [node name="BaseSwappable" type="RigidBody2D"]
 collision_layer = 2147483648
@@ -148,13 +186,12 @@ physics_material_override = SubResource("PhysicsMaterial_cu6ri")
 gravity_scale = 0.0
 lock_rotation = true
 freeze = true
-script = ExtResource("1_sn41v")
-dangerous = true
-pickup = true
+script = ExtResource("1_fexp6")
+wall = true
 jump_force = 125.0
 
 [node name="Size" type="Node2D" parent="."]
-scale = Vector2(2.31466, 2.31466)
+position = Vector2(0, -137)
 
 [node name="Flapping" type="Node2D" parent="Size"]
 
@@ -163,26 +200,55 @@ scale = Vector2(2.31466, 2.31466)
 [node name="Sprite" type="Sprite2D" parent="Size/Flapping/Floating"]
 material = SubResource("ShaderMaterial_blx8c")
 use_parent_material = true
-position = Vector2(-1.91763, -21.7124)
-texture = ExtResource("1_uodgk")
+position = Vector2(-2, 52)
+scale = Vector2(4.00148, 4.07689)
+texture = ExtResource("2_kala1")
 
 [node name="Skull" type="Sprite2D" parent="Size/Flapping/Floating/Sprite"]
-visible = false
 position = Vector2(0.446114, 1.93689)
-scale = Vector2(0.703242, 0.703242)
-texture = ExtResource("4_dw7a1")
-offset = Vector2(-28.695, 17.47)
+texture = ExtResource("3_s883a")
+
+[node name="Fuse" type="Sprite2D" parent="Size/Flapping/Floating/Sprite"]
+z_index = -1
+position = Vector2(13.0331, -1.65059)
+scale = Vector2(1.08284, 1.08284)
+texture = ExtResource("4_om7lt")
+offset = Vector2(23.45, -27.135)
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Size/Flapping/Floating/Sprite/Fuse"]
+position = Vector2(38.0495, -23.2458)
+scale = Vector2(50, 50)
+amount = 50
+lifetime = 0.2
+speed_scale = 0.1
+randomness = 1.0
+direction = Vector2(0, -1)
+spread = 2.85
+initial_velocity_max = 9.99
+scale_amount_min = 49.9
+scale_amount_max = 130.7
+scale_amount_curve = SubResource("Curve_4evrd")
+color_ramp = SubResource("Gradient_oiu2x")
+color_initial_ramp = SubResource("Gradient_gfix6")
+hue_variation_min = -0.02
+hue_variation_max = 0.46
+
+[node name="Crown" parent="Size/Flapping/Floating/Sprite" instance=ExtResource("5_bi48u")]
+position = Vector2(12.1923, -21.2514)
+rotation = 0.418319
+scale = Vector2(2.81919, 2.78469)
+skew = 0.0140327
 
 [node name="Shadow" type="Sprite2D" parent="Size"]
 modulate = Color(0.246094, 0.34375, 0.109375, 1)
 z_index = -99
 z_as_relative = false
-position = Vector2(-0.983521, 12.8186)
-scale = Vector2(0.859332, 0.233672)
-texture = ExtResource("2_vqnaf")
+position = Vector2(-0.983521, 137)
+scale = Vector2(5.87448, 1.59741)
+texture = ExtResource("6_533m4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-15, -18)
+position = Vector2(-15, -119)
 scale = Vector2(1.17023, 1.17023)
 shape = SubResource("CircleShape2D_u352e")
 
@@ -192,21 +258,24 @@ wait_time = 0.2
 autostart = true
 
 [node name="EyeSight" type="Area2D" parent="."]
+visible = false
+position = Vector2(0, -137)
 collision_mask = 16777217
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EyeSight"]
-visible = false
 shape = SubResource("CircleShape2D_30520")
 
 [node name="Point_to_player" type="Node2D" parent="."]
+position = Vector2(0, -137)
 
 [node name="Chat" type="Sprite2D" parent="."]
-position = Vector2(34.2214, -16.4387)
+position = Vector2(34.2214, -153.439)
 scale = Vector2(1e-05, 1e-05)
-texture = ExtResource("4_iswoc")
+texture = ExtResource("7_fo7sg")
 offset = Vector2(23.005, -18.34)
 
 [node name="Wings" type="AnimationPlayer" parent="."]
+speed_scale = 2.0
 libraries = {
 "": SubResource("AnimationLibrary_8o8qd")
 }
@@ -224,30 +293,34 @@ libraries = {
 [node name="Audio" type="Node" parent="."]
 
 [node name="Up" type="AudioStreamPlayer2D" parent="Audio"]
-stream = ExtResource("5_ptr2d")
+position = Vector2(0, -137)
+stream = ExtResource("8_s4yv8")
 
 [node name="Down" type="AudioStreamPlayer2D" parent="Audio"]
-stream = ExtResource("6_qc57a")
+position = Vector2(0, -137)
+stream = ExtResource("9_o1l3d")
 
 [node name="Touch" type="Area2D" parent="."]
+position = Vector2(0, -137)
 collision_layer = 128
 collision_mask = 64
 
 [node name="Shape" type="CollisionShape2D" parent="Touch"]
+visible = false
 position = Vector2(-14, -16)
 shape = SubResource("CircleShape2D_el2j4")
 
 [node name="Wall" type="StaticBody2D" parent="."]
+visible = false
+position = Vector2(0, -137)
 collision_layer = 2
 
 [node name="Shape" type="CollisionShape2D" parent="Wall"]
 position = Vector2(-14, -18)
 shape = SubResource("CircleShape2D_cyhsj")
 
-[node name="Crown" parent="." instance=ExtResource("8_uain4")]
-position = Vector2(2, -22)
-rotation = 0.425292
-scale = Vector2(4.4549, 4.4549)
+[node name="Player" parent="." instance=ExtResource("10_8cjye")]
+position = Vector2(383, -51)
 
 [connection signal="timeout" from="JumpInterval" to="." method="jump"]
 [connection signal="body_entered" from="EyeSight" to="." method="_check_body_entered_for_player"]
